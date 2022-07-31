@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/code8cn.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/code8cn.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":"ture","async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="下载源 - 571.3 KBhttps:&#x2F;&#x2F;www.codeproject.com&#x2F;KB&#x2F;Articles&#x2F;1221034&#x2F;Source.zipPath finding challengehttp:&#x2F;&#x2F;airobots.azurewebsites.net&#x2F; 在 Visual Studio 2017 中解压缩并打开解决方案 介绍您有没有想过 GPS 应用程序如何计算到达所选目的地的最快方式？正如您将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#中的寻路算法">
+<meta property="og:url" content="http://example.com/560.html">
+<meta property="og:site_name" content="代码吧">
+<meta property="og:description" content="下载源 - 571.3 KBhttps:&#x2F;&#x2F;www.codeproject.com&#x2F;KB&#x2F;Articles&#x2F;1221034&#x2F;Source.zipPath finding challengehttp:&#x2F;&#x2F;airobots.azurewebsites.net&#x2F; 在 Visual Studio 2017 中解压缩并打开解决方案 介绍您有没有想过 GPS 应用程序如何计算到达所选目的地的最快方式？正如您将">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-31T09:32:39.000Z">
+<meta property="article:modified_time" content="2022-07-31T13:13:42.242Z">
+<meta property="article:author" content="Code8">
+<meta property="article:tag" content="微软">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/560.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C#中的寻路算法 | 代码吧</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">代码吧</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">代码改变世界</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/560.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/code8.jpg">
+      <meta itemprop="name" content="Code8">
+      <meta itemprop="description" content="编程创造未来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码吧">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C#中的寻路算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-31 17:32:39 / 修改时间：21:13:42" itemprop="dateCreated datePublished" datetime="2022-07-31T17:32:39+08:00">2022-07-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSharp/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>下载源 - 571.3 KB<br><a target="_blank" rel="noopener" href="https://www.codeproject.com/KB/Articles/1221034/Source.zip">https://www.codeproject.com/KB/Articles/1221034/Source.zip</a><br>Path finding challenge<br><a target="_blank" rel="noopener" href="http://airobots.azurewebsites.net/">http://airobots.azurewebsites.net/</a></p>
+<p>在 Visual Studio 2017 中解压缩并打开解决方案</p>
+<p>介绍<br>您有没有想过 GPS 应用程序如何计算到达所选目的地的最快方式？正如您将看到的，它实际上非常简单。</p>
+<p>本文对此进行了解释，并提供了您可以随意使用的示例代码。文章还比较了两种常见的基本算法，Dijkstra 和 A*。</p>
+<p>问题<br>假设你有一张地图。你知道你在哪里，你想去哪里。地图有连接节点（有坐标的地方）的道路（它们被称为边）。</p>
+<p>从每个节点，你可以去一个或多个边。一条边有一个成本（例如，通过它所需的长度或时间）。<br>对于小地图，也许可以计算到目的地的所有可能路线并选择最短的路线。但这对于具有许多节点的地图来说不是很实用，因为组合呈指数增长。</p>
+<span id="more"></span>
+<p>迪杰斯特拉<br>Dijkstra 算法由 Edsger Dijkstra 于 1959 年发现。这是它的工作原理：</p>
+<p>从起始节点开始，将所有连接的节点添加到优先级队列中。<br>按最低成本对优先级队列进行排序，并使第一个节点成为当前节点。<br>对于每个子节点，选择通向最短路径的最佳开始。<br>当从一个节点调查所有边时，该节点是“ Visited”，你不需要再去那里。<br>将连接到当前节点的每个子节点添加到优先级队列中。<br>转到第 2 步，直到队列为空。<br>递归地创建从头到尾引导最短路径的每个节点节点的列表。<br>反转列表，您找到了最短路径<br>换句话说，对于节点的每个子节点，递归地测量它到起点的距离。存储距离和哪个节点导致开始的最短路径。当您到达结束节点时，以最短的方式递归地回到起点，反转该列表，您就有了最短路径。</p>
+<p>下面是我在 C# 代码中的 Dijkstra 算法实现。可能比上面的更容易理解。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Node&gt; <span class="title">GetShortestPathDijkstra</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    DijkstraSearch();</span><br><span class="line">    <span class="keyword">var</span> shortestPath = <span class="keyword">new</span> List&lt;Node&gt;();</span><br><span class="line">    shortestPath.Add(End);</span><br><span class="line">    BuildShortestPath(shortestPath, End);</span><br><span class="line">    shortestPath.Reverse();</span><br><span class="line">    <span class="keyword">return</span> shortestPath;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">BuildShortestPath</span>(<span class="params">List&lt;Node&gt; list, Node node</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (node.NearestToStart == <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    list.Add(node.NearestToStart);</span><br><span class="line">    BuildShortestPath(list, node.NearestToStart);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">DijkstraSearch</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Start.MinCostToStart = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> prioQueue = <span class="keyword">new</span> List&lt;Node&gt;();</span><br><span class="line">    prioQueue.Add(Start);</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        prioQueue = prioQueue.OrderBy(x =&gt; x.MinCostToStart).ToList();</span><br><span class="line">        <span class="keyword">var</span> node = prioQueue.First();</span><br><span class="line">        prioQueue.Remove(node);</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> cnn <span class="keyword">in</span> node.Connections.OrderBy(x =&gt; x.Cost))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> childNode = cnn.ConnectedNode;</span><br><span class="line">            <span class="keyword">if</span> (childNode.Visited)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (childNode.MinCostToStart == <span class="literal">null</span> ||</span><br><span class="line">                node.MinCostToStart + cnn.Cost &lt; childNode.MinCostToStart)</span><br><span class="line">            &#123;</span><br><span class="line">                childNode.MinCostToStart = node.MinCostToStart + cnn.Cost;</span><br><span class="line">                childNode.NearestToStart = node;</span><br><span class="line">                <span class="keyword">if</span> (!prioQueue.Contains(childNode))</span><br><span class="line">                    prioQueue.Add(childNode);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        node.Visited = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (node == End)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">while</span> (prioQueue.Any());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是我的测试程序中随机生成的地图。点是节点，它们之间是代表边的线。该地图由 5000 个节点和 15000 条边组成。</p>
+<p>搜索算法会访问较浅颜色的点，并以绿色绘制最佳路径。</p>
+<p>A* 算法<br>Dijkstra 算法有很多改进。最常见的一种称为 A*。它与 Dijkstra 基本相同，只是做了一个简单的修改。</p>
+<p>边缘的优先级还取决于该边缘与目标的直线距离有多近。因此，在运行 A* 搜索之前，必须测量每个节点到最终目的地的直线距离，如果您知道每个节点的坐标，这很容易。这是 A* 的最简单形式，它的定义还允许改进启发式函数。（在本例中为 StraightLineDistanceToEnd）</p>
+<p>该算法具有很大的性能优势，因为当路径末端的方向已知时，它不需要访问尽可能多的节点。</p>
+<p>请参阅下面的实现。以粗体显示添加到 Dijkstra 算法的内容。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Node&gt; <span class="title">GetShortestPathAstar</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> node <span class="keyword">in</span> Map.Nodes)</span><br><span class="line">        node.StraightLineDistanceToEnd = node.StraightLineDistanceTo(End);</span><br><span class="line">    AstarSearch();</span><br><span class="line">    <span class="keyword">var</span> shortestPath = <span class="keyword">new</span> List&lt;Node&gt;();</span><br><span class="line">    shortestPath.Add(End);</span><br><span class="line">    BuildShortestPath(shortestPath, End);</span><br><span class="line">    shortestPath.Reverse();</span><br><span class="line">    <span class="keyword">return</span> shortestPath;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AstarSearch</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Start.MinCostToStart = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> prioQueue = <span class="keyword">new</span> List&lt;Node&gt;();</span><br><span class="line">    prioQueue.Add(Start);</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        prioQueue = prioQueue.OrderBy(x =&gt; x.MinCostToStart + x.StraightLineDistanceToEnd).ToList();</span><br><span class="line">        <span class="keyword">var</span> node = prioQueue.First();</span><br><span class="line">        prioQueue.Remove(node);</span><br><span class="line">        NodeVisits++;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> cnn <span class="keyword">in</span> node.Connections.OrderBy(x =&gt; x.Cost))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> childNode = cnn.ConnectedNode;</span><br><span class="line">            <span class="keyword">if</span> (childNode.Visited)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (childNode.MinCostToStart == <span class="literal">null</span> ||</span><br><span class="line">                node.MinCostToStart + cnn.Cost &lt; childNode.MinCostToStart)</span><br><span class="line">            &#123;</span><br><span class="line">                childNode.MinCostToStart = node.MinCostToStart + cnn.Cost;</span><br><span class="line">                childNode.NearestToStart = node;</span><br><span class="line">                <span class="keyword">if</span> (!prioQueue.Contains(childNode))</span><br><span class="line">                    prioQueue.Add(childNode);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        node.Visited = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (node == End)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">while</span> (prioQueue.Any());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是与上面相同的地图，但路径是使用 A* 算法计算的。如您所见，需要访问的节点要少得多。</p>
+<p>结果<br>在 500,000 个节点的同一张地图上运行这两种算法时，我得到了这些结果。</p>
+<pre><code>                                Dijkstra	                    A*
+</code></pre>
+<p>Visited nodes	    330,871	               19,410<br>Time to calculate (ms)        850	                   127<br>Cost of best path	     14,322	               22,994<br>Distance of shortest path 0,82446           0,82446</p>
+<p>如上表所示，A* 算法比 Dijkstra 快 7 倍左右，并且它们都找到了最短路径。<br>但是，当为边的成本生成随机数时，Dijkstra 会找到一条成本更低的路径。<br>例如，在真实地图中，最短路径并不总是最好的。在限速较高的道路上行驶可能会让您更快到达目的地。这就是为什么在边的成本中添加一个随机数会使这个实验更加现实。</p>
+<p>结论<br>那么 Dijkstra 和 A* 的最佳寻路算法是什么算法呢？<br>我会说这取决于。如果您只对最短路径感兴趣，那就是 A<em>。<br>它要快得多，并且给出与 Dijkstra 相同的结果。但是，如果边的成本还有其他方面而不是其长度，那么 Dijkstra 在找到最佳路径方面比这个版本的 A</em> 更好。毕竟，它仍然非常快。我认为 500,000 个节点是一个非常大的数据集。我也认为我的实现可以优化很多。</p>
+<p>挑战<br>如果您还幼稚地喜欢编程挑战，也许您想对机器人进行编程以找到迷宫的出路？</p>
+<p>您可能需要一些寻路算法来解决它。<br>请参阅此站点：  http :&#x2F;&#x2F;airobots.azurewebsites.net&#x2F;</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Microsoft/" rel="tag"><i class="fa fa-tag"></i> 微软</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2736.html" rel="prev" title="C#/.NET 中的动态语言运行时">
+      <i class="fa fa-chevron-left"></i> C#/.NET 中的动态语言运行时
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Code8"
+      src="/images/code8.jpg">
+  <p class="site-author-name" itemprop="name">Code8</p>
+  <div class="site-description" itemprop="description">编程创造未来</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="/categories/" title="&#x2F;categories&#x2F;">📖 分类列表</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Android/" title="&#x2F;categories&#x2F;Android&#x2F;">👉 Android</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Linux/" title="&#x2F;categories&#x2F;Linux&#x2F;">👉 Linux</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Java/" title="&#x2F;categories&#x2F;Java&#x2F;">👉 Java</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/CSharp/" title="&#x2F;categories&#x2F;CSharp&#x2F;">👉 C#</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/" title="&#x2F;tags&#x2F;">💬 标签列表</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Ubuntu/" title="&#x2F;tags&#x2F;Ubuntu&#x2F;">✍ Ubuntu</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Nodejs/" title="&#x2F;tags&#x2F;Nodejs&#x2F;">✍ Nodejs</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Github/" title="&#x2F;tags&#x2F;Github&#x2F;">✍ Github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Hexo/" title="&#x2F;tags&#x2F;Hexo&#x2F;">🔔 Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Microsoft/" title="&#x2F;tags&#x2F;Microsoft&#x2F;">🔔 微软</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Php/" title="&#x2F;tags&#x2F;Php&#x2F;">🔔 Php</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Code8</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

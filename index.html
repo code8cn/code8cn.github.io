@@ -181,10 +181,166 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/560.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/code8.jpg">
+      <meta itemprop="name" content="Code8">
+      <meta itemprop="description" content="编程创造未来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码吧">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/560.html" class="post-title-link" itemprop="url">C#中的寻路算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-31 17:32:39 / 修改时间：21:13:42" itemprop="dateCreated datePublished" datetime="2022-07-31T17:32:39+08:00">2022-07-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSharp/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>下载源 - 571.3 KB<br><a target="_blank" rel="noopener" href="https://www.codeproject.com/KB/Articles/1221034/Source.zip">https://www.codeproject.com/KB/Articles/1221034/Source.zip</a><br>Path finding challenge<br><a target="_blank" rel="noopener" href="http://airobots.azurewebsites.net/">http://airobots.azurewebsites.net/</a></p>
+<p>在 Visual Studio 2017 中解压缩并打开解决方案</p>
+<p>介绍<br>您有没有想过 GPS 应用程序如何计算到达所选目的地的最快方式？正如您将看到的，它实际上非常简单。</p>
+<p>本文对此进行了解释，并提供了您可以随意使用的示例代码。文章还比较了两种常见的基本算法，Dijkstra 和 A*。</p>
+<p>问题<br>假设你有一张地图。你知道你在哪里，你想去哪里。地图有连接节点（有坐标的地方）的道路（它们被称为边）。</p>
+<p>从每个节点，你可以去一个或多个边。一条边有一个成本（例如，通过它所需的长度或时间）。<br>对于小地图，也许可以计算到目的地的所有可能路线并选择最短的路线。但这对于具有许多节点的地图来说不是很实用，因为组合呈指数增长。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/560.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2736.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/code8.jpg">
+      <meta itemprop="name" content="Code8">
+      <meta itemprop="description" content="编程创造未来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码吧">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2736.html" class="post-title-link" itemprop="url">C#/.NET 中的动态语言运行时</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-31 17:08:29 / 修改时间：17:32:10" itemprop="dateCreated datePublished" datetime="2022-07-31T17:08:29+08:00">2022-07-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSharp/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>C# 中的动态语言运行时 DLR 概述<br>本文讨论动态语言运行时如何在 C#、DynamicObject 和 ExpandoObject 中工作，以及 IronPython 在 .NET 中的最简单用法。<br>介绍<br>尽管 C# 属于静态类型语言，但在该语言的最新版本中添加了一些动态功能。在本文中，我想展示动态语言运行时 (DLR)如何在 C# 中工作，DynamicObject以及IronPython在 .NET 中ExpandoObject的最简单用法。</p>
+<p>C# 中的动态语言运行时 DLR<br>DLR（动态语言运行时）自.NET 4.0开始添加，代表IronPython和IronRuby等动态语言的运行时环境。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2736.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/1504.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8logo.png">
+      <meta itemprop="image" content="/images/code8.jpg">
       <meta itemprop="name" content="Code8">
       <meta itemprop="description" content="编程创造未来">
     </span>
@@ -259,7 +415,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/22981.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8logo.png">
+      <meta itemprop="image" content="/images/code8.jpg">
       <meta itemprop="name" content="Code8">
       <meta itemprop="description" content="编程创造未来">
     </span>
@@ -279,9 +435,24 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-07-28 15:35:15 / 修改时间：15:40:06" itemprop="dateCreated datePublished" datetime="2022-07-28T15:35:15+08:00">2022-07-28</time>
+              <time title="创建时间：2022-07-28 15:35:15" itemprop="dateCreated datePublished" datetime="2022-07-28T15:35:15+08:00">2022-07-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-31 17:10:35" itemprop="dateModified" datetime="2022-07-31T17:10:35+08:00">2022-07-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
             </span>
 
           
@@ -317,7 +488,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/30233.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8logo.png">
+      <meta itemprop="image" content="/images/code8.jpg">
       <meta itemprop="name" content="Code8">
       <meta itemprop="description" content="编程创造未来">
     </span>
@@ -337,10 +508,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-07-28 13:45:43 / 修改时间：13:50:10" itemprop="dateCreated datePublished" datetime="2022-07-28T13:45:43+08:00">2022-07-28</time>
+              <time title="创建时间：2022-07-28 13:45:43" itemprop="dateCreated datePublished" datetime="2022-07-28T13:45:43+08:00">2022-07-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-31 16:34:39" itemprop="dateModified" datetime="2022-07-31T16:34:39+08:00">2022-07-31</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -362,7 +539,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>稍后添加</p>
+          <p>_vercel	TXT	默认	<br>vc-domain-verify&#x3D;code.quora8.cn,xxxx</p>
+<p>code	CNAME	默认	<br>cname.vercel-dns.com</p>
+<p>@  A  默认  76.76.21.21</p>
+<p>www  CNAME  默认	cname.vercel-dns.com</p>
 
       
     </div>
@@ -385,7 +565,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/33390.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8logo.png">
+      <meta itemprop="image" content="/images/code8.jpg">
       <meta itemprop="name" content="Code8">
       <meta itemprop="description" content="编程创造未来">
     </span>
@@ -475,7 +655,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/25333.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8logo.png">
+      <meta itemprop="image" content="/images/code8.jpg">
       <meta itemprop="name" content="Code8">
       <meta itemprop="description" content="编程创造未来">
     </span>
@@ -555,7 +735,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/57909.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8logo.png">
+      <meta itemprop="image" content="/images/code8.jpg">
       <meta itemprop="name" content="Code8">
       <meta itemprop="description" content="编程创造未来">
     </span>
@@ -636,7 +816,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/59101.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8logo.png">
+      <meta itemprop="image" content="/images/code8.jpg">
       <meta itemprop="name" content="Code8">
       <meta itemprop="description" content="编程创造未来">
     </span>
@@ -714,7 +894,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/16583.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8logo.png">
+      <meta itemprop="image" content="/images/code8.jpg">
       <meta itemprop="name" content="Code8">
       <meta itemprop="description" content="编程创造未来">
     </span>
@@ -843,7 +1023,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Code8"
-      src="/images/code8logo.png">
+      src="/images/code8.jpg">
   <p class="site-author-name" itemprop="name">Code8</p>
   <div class="site-description" itemprop="description">编程创造未来</div>
 </div>
@@ -851,14 +1031,14 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -871,6 +1051,49 @@
 </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="/categories/" title="&#x2F;categories&#x2F;">📖 分类列表</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Android/" title="&#x2F;categories&#x2F;Android&#x2F;">👉 Android</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Linux/" title="&#x2F;categories&#x2F;Linux&#x2F;">👉 Linux</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Java/" title="&#x2F;categories&#x2F;Java&#x2F;">👉 Java</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/CSharp/" title="&#x2F;categories&#x2F;CSharp&#x2F;">👉 C#</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/" title="&#x2F;tags&#x2F;">💬 标签列表</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Ubuntu/" title="&#x2F;tags&#x2F;Ubuntu&#x2F;">✍ Ubuntu</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Nodejs/" title="&#x2F;tags&#x2F;Nodejs&#x2F;">✍ Nodejs</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Github/" title="&#x2F;tags&#x2F;Github&#x2F;">✍ Github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Hexo/" title="&#x2F;tags&#x2F;Hexo&#x2F;">🔔 Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Microsoft/" title="&#x2F;tags&#x2F;Microsoft&#x2F;">🔔 微软</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Php/" title="&#x2F;tags&#x2F;Php&#x2F;">🔔 Php</a>
+        </li>
+    </ul>
+  </div>
 
       </div>
 

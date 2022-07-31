@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/code8cn.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/code8cn.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":"ture","async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="C# 中的动态语言运行时 DLR 概述本文讨论动态语言运行时如何在 C#、DynamicObject 和 ExpandoObject 中工作，以及 IronPython 在 .NET 中的最简单用法。介绍尽管 C# 属于静态类型语言，但在该语言的最新版本中添加了一些动态功能。在本文中，我想展示动态语言运行时 (DLR)如何在 C# 中工作，DynamicObject以及IronPython在 .N">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#&#x2F;.NET 中的动态语言运行时">
+<meta property="og:url" content="http://example.com/2736.html">
+<meta property="og:site_name" content="代码吧">
+<meta property="og:description" content="C# 中的动态语言运行时 DLR 概述本文讨论动态语言运行时如何在 C#、DynamicObject 和 ExpandoObject 中工作，以及 IronPython 在 .NET 中的最简单用法。介绍尽管 C# 属于静态类型语言，但在该语言的最新版本中添加了一些动态功能。在本文中，我想展示动态语言运行时 (DLR)如何在 C# 中工作，DynamicObject以及IronPython在 .N">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-31T09:08:29.000Z">
+<meta property="article:modified_time" content="2022-07-31T09:32:10.436Z">
+<meta property="article:author" content="Code8">
+<meta property="article:tag" content="微软">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2736.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C#/.NET 中的动态语言运行时 | 代码吧</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">代码吧</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">代码改变世界</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2736.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/code8.jpg">
+      <meta itemprop="name" content="Code8">
+      <meta itemprop="description" content="编程创造未来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码吧">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C#/.NET 中的动态语言运行时
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-31 17:08:29 / 修改时间：17:32:10" itemprop="dateCreated datePublished" datetime="2022-07-31T17:08:29+08:00">2022-07-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSharp/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>C# 中的动态语言运行时 DLR 概述<br>本文讨论动态语言运行时如何在 C#、DynamicObject 和 ExpandoObject 中工作，以及 IronPython 在 .NET 中的最简单用法。<br>介绍<br>尽管 C# 属于静态类型语言，但在该语言的最新版本中添加了一些动态功能。在本文中，我想展示动态语言运行时 (DLR)如何在 C# 中工作，DynamicObject以及IronPython在 .NET 中ExpandoObject的最简单用法。</p>
+<p>C# 中的动态语言运行时 DLR<br>DLR（动态语言运行时）自.NET 4.0开始添加，代表IronPython和IronRuby等动态语言的运行时环境。</p>
+<span id="more"></span>
+<p>为了理解这个创新的本质，你需要知道静态类型和动态类型的语言之间的区别。在具有静态类型的语言中，所有类型及其成员 - 属性和方法的识别发生在编译阶段，而在动态语言中，系统在执行之前对类型的属性和方法一无所知。</p>
+<p>由于这个DLR环境，C# 可以创建其成员在程序执行阶段被识别的动态对象，并将它们与具有静态类型的传统对象一起使用。</p>
+<p>动态类型的使用是在 C# 中使用DLR的关键点，因此您可以在编译阶段跳过类型检查。此外，声明为动态的对象可以在程序运行期间更改其类型。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">            dynamic x = 3;     // here x is a integer</span><br><span class="line">            Console.WriteLine(x);</span><br><span class="line"> </span><br><span class="line">            x = &quot;Hello world&quot;; // now x is a string</span><br><span class="line">            Console.WriteLine(x);</span><br><span class="line"> </span><br><span class="line">            x = new Item_mast() </span><br><span class="line">                &#123; ItemId=1,ItemDesсription=&quot;Pen&quot;,Cost=10 &#125;; // now x is a Item_mast</span><br><span class="line">            Console.WriteLine(x);</span><br><span class="line">            Console.ReadLine();        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  public class Item_mast</span><br><span class="line">        &#123;</span><br><span class="line">            public int ItemId &#123; get; set; &#125;</span><br><span class="line">            public string ItemDesсription &#123; get; set; &#125;</span><br><span class="line">            public int Cost &#123; get; set; &#125;</span><br><span class="line"> </span><br><span class="line">            public override string ToString()</span><br><span class="line">            &#123;</span><br><span class="line">                return ItemId.ToString() + &quot;, &quot;+ ItemDesсription + &quot; &quot; + Cost.ToString();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>图 1 - 基本 DLR 示例<br>让我们稍微描述一下代码。即使变量x多次更改其类型，此代码也可以正常工作。dynamic这是和之间的关键区别var。对于使用var关键字声明的变量，类型在编译时输出，然后在运行时不会更改。此外，您可以注意到dynamic类型和object类型之间的一些相似之处。我们可以很容易地替换表达式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dynamic x = 3;</span><br></pre></td></tr></table></figure>
+<p>至：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object x = 3</span><br></pre></td></tr></table></figure>
+<p>我们有同样的结果。</p>
+<p>但是，object类型也存在差异。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">object obj = 24;</span><br><span class="line">dynamic dyn = 24;</span><br><span class="line">obj += 4; // we can not do it!!!</span><br><span class="line">dyn += 4; // now is ok</span><br></pre></td></tr></table></figure>
+<p>在行上obj +&#x3D; 4，我们将看到一个错误，因为该+&#x3D;操作不能应用于objectandint类型。使用声明为 的变量dynamic，这是可能的，因为它的类型只会在运行时知道。<br>需要注意的是，dynamic不仅可以应用于变量，还可以应用于方法和属性。让我们进行更改class并考虑下一个示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Item_mast</span><br><span class="line">        &#123;</span><br><span class="line">            public int ItemId &#123; get; set; &#125;</span><br><span class="line">            public string ItemDesсription &#123; get; set; &#125;</span><br><span class="line">            public dynamic Cost &#123; get; set; &#125; </span><br><span class="line"> </span><br><span class="line">            public dynamic GetPrice(dynamic value, string format)</span><br><span class="line">            &#123;</span><br><span class="line">                if (format == &quot;string&quot;)</span><br><span class="line">                &#123;</span><br><span class="line">                    return value + &quot; dollar&quot;;</span><br><span class="line">                &#125;</span><br><span class="line">                else if (format == &quot;int&quot;)</span><br><span class="line">                &#123;</span><br><span class="line">                    return value;</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    return 0.0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Item_mass class定义了一个动态属性，因此在Cost为该属性设置值时，我们可以同时写Item.Cost&#x3D;10.00和Item.Cost&#x3D;”ten”。这两个选项都是正确的。还有一种GetPrice方法可以返回动态值。例如，根据参数，我们可以返回string价格表示或数字表示。该方法还将动态作为参数。因此，我们可以同时传递整数和小数作为收入值。我们来看看具体的应用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dynamic item1 = new Item_mast() &#123; ItemId = 1, ItemDesсription = &quot;Pen&quot;, Cost = 10 &#125;;</span><br><span class="line">            Console.WriteLine(item1);</span><br><span class="line">            Console.WriteLine(item1.GetPrice(10.00, &quot;int&quot;));</span><br><span class="line"> </span><br><span class="line">            dynamic item2 = new Item_mast() </span><br><span class="line">                            &#123; ItemId = 2, ItemDesсription = &quot;Pencil&quot;, Cost = &quot;five&quot; &#125;;</span><br><span class="line">            Console.WriteLine(item2);</span><br><span class="line">            Console.WriteLine(item2.GetPrice(5, &quot;string&quot;));</span><br><span class="line">            Console.ReadLine();</span><br></pre></td></tr></table></figure>
+
+<p>结果，我们将拥有（图 2）：<br>图 2 - 使用动态变量示例的结果<br>在这一部分中，我们通过示例检查了动态类型的使用。</p>
+<p>DynamicObject 和 ExpandoObject<br>扩展对象<br>C#&#x2F;.NET开发能够创建非常类似于JavaScript中使用的动态对象。这种可能性是通过使用命名空间 Dynamic，特别是ExpandoObject类来提供的。</p>
+<p>让我们考虑一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">dynamic viewbag = new System.Dynamic.ExpandoObject();</span><br><span class="line">            viewbag.ItemId = 1;</span><br><span class="line">            viewbag.ItemDesсription = &quot;Pen&quot;;</span><br><span class="line">            viewbag.Cost = 10;</span><br><span class="line"></span><br><span class="line">            viewbag.Categories = new List&lt;string&gt; &#123; &quot;Flex&quot;, &quot;Soft&quot;, &quot;Luxury&quot; &#125;;</span><br><span class="line"></span><br><span class="line">            Console.WriteLine($&quot;&#123;viewbag.ItemId&#125; ; </span><br><span class="line">                             &#123;viewbag.ItemDesсription&#125; ; &#123;viewbag.Cost&#125;&quot;);</span><br><span class="line">            foreach (var cat in viewbag.Categories)</span><br><span class="line">                Console.WriteLine(cat);</span><br><span class="line"></span><br><span class="line">            //declare method</span><br><span class="line">            viewbag.IncrementCost = (Action&lt;int&gt;)(x =&gt; viewbag.Cost += x);</span><br><span class="line">            viewbag.IncrementCost(6); // Increase Cost </span><br><span class="line">            Console.WriteLine($&quot;&#123;viewbag.ItemId&#125; ; </span><br><span class="line">                                &#123;viewbag.ItemDesсription&#125; ; &#123;viewbag.Cost&#125;&quot;);</span><br><span class="line"></span><br><span class="line">            Console.ReadLine();</span><br></pre></td></tr></table></figure>
+<p>图 3 中的结果：<br>图 3 - 使用 ExpandoObject() 的示例<br>动态ExpandoObject对象可以声明任何可以表示各种对象的属性。您还可以使用委托设置方法。</p>
+<p>动态对象<br>该类DynamicObject与ExpandoObject. 但是，在 的情况下，我们需要通过继承并实现其方法DynamicObject来创建自己的类：DynamicObject</p>
+<p>TryBinaryOperation()：在两个对象之间执行二元运算。等价于标准的二元运算，例如x + y)<br>TryConvert()：执行到特定类型的转换。相当于C#中的基本转换，例如(SomeType)obj<br>TryCreateInstance(): 创建一个对象的实例<br>TryDeleteIndex()：删除索引器<br>TryDeleteMember(): 删除一个属性或方法<br>TryGetIndex()：通过索引器按索引获取元素。在 C# 中，它可以等价于以下表达式int x &#x3D; collection[i]<br>TryGetMember(): 获取财产的价值。相当于访问一个属性，例如，string n &#x3D; item1.ItemDescription<br>TryInvoke(): 调用一个对象作为委托<br>TryInvokeMember(): 方法调用<br>TrySetIndex()：通过索引器按索引设置元素。在 C# 中，它可以等价于以下表达式collection[i] &#x3D; x;<br>TrySetMember(): 设置属性。相当于将一个项目值分配给一个property.Itemdescription &#x3D; “Pen”<br>TryUnaryOperation()：执行类似于 C# 中的一元运算的一元运算：x++<br>这些方法中的每一个都具有相同的检测模型：它们都返回一个布尔值，指示操作是否成功。作为第一个参数，它们都采用活页夹或活页夹对象。如果方法表示对可以接受参数的索引器或对象方法的调用，则object[] 数组用作第二个参数 - 它存储传递给方法或索引器的参数。</p>
+<p>几乎所有的操作，除了设置和删除属性和索引器外，都会返回一个特定的值（例如，如果我们获取一个属性的值。在这种情况下，使用第三个参数out对象值，其目的是存储返回的object.</p>
+<p>让我们通过创建一个dynamic对象类来举个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Item_mast : DynamicObject</span><br><span class="line">        &#123;</span><br><span class="line">            Dictionary&lt;string, object&gt; members = new Dictionary&lt;string, object&gt;();</span><br><span class="line"> </span><br><span class="line">            // set prop</span><br><span class="line">            public override bool TrySetMember(SetMemberBinder binder, object value)</span><br><span class="line">            &#123;</span><br><span class="line">                members[binder.Name] = value;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            // get prop</span><br><span class="line">            public override bool TryGetMember(GetMemberBinder binder, out object result)</span><br><span class="line">            &#123;</span><br><span class="line">                result = null;</span><br><span class="line">                if (members.ContainsKey(binder.Name))</span><br><span class="line">                &#123;</span><br><span class="line">                    result = members[binder.Name];</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">            // call method</span><br><span class="line">            public override bool TryInvokeMember</span><br><span class="line">            (InvokeMemberBinder binder, object[] args, out object result)</span><br><span class="line">            &#123;</span><br><span class="line">                dynamic method = members[binder.Name];</span><br><span class="line">                result = method((int)args[0]);</span><br><span class="line">                return result != null;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们不能直接从 中创建对象DynamicObject，所以我们的Item_mast 类是一个孩子。在我们的类中，我们重新定义了三个方法。我们还使用Dictionary&lt;string, object&gt;成员来存储所有类成员，但我们也将它用于属性和方法。在这本字典中，keyshere 是names属性和方法，而values是values这些属性。<br>使用该TrySetMember() 方法，我们设置属性：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool TrySetMember(SetMemberBinder binder, object value)</span><br></pre></td></tr></table></figure>
+<p>在这里，binder 参数存储要设置的属性的名称（binder.Name），value 是它需要设置的值。<br>TryGetMember是我们用来获取属性值的重写方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool TryGetMember(GetMemberBinder binder, out object result)</span><br></pre></td></tr></table></figure>
+<p>同样，活页夹包含属性的名称，结果参数将包含结果的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">The TryInvokeMember method is defined for calling methods:</span><br><span class="line"></span><br><span class="line">public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object result)</span><br><span class="line">&#123;</span><br><span class="line">    dynamic method = members[binder.Name];</span><br><span class="line">    result = method((int)args[0]);</span><br><span class="line">    return result != null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先，使用 binder，我们获取方法，然后将args[0] 参数传递给它，首先将其转换为int类型，然后在result参数中设置方法的结果。也就是说，在这种情况下，假设该方法将采用该int类型的一个参数并返回一些结果。让我们举一个在我们的应用程序中使用类的例子：<br>现在让我们在程序中应用这个类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">   dynamic item = new Item_mast();</span><br><span class="line">            item.ItemId = 1;</span><br><span class="line">            item.ItemDesсription = &quot;Pen&quot;;</span><br><span class="line">            item.Cost = 10;</span><br><span class="line">            Func&lt;int, int&gt; Incr = delegate (int x) &#123; item.Cost += x; return item.Cost; &#125;;</span><br><span class="line">            item.IncrementCost = Incr;</span><br><span class="line">            Console.WriteLine($&quot;&#123;item.ItemId&#125; ; &#123;item.ItemDesсription&#125; ; &#123;item.Cost&#125;&quot;);         </span><br><span class="line">            item.IncrementCost(6);</span><br><span class="line">            Console.WriteLine($&quot;&#123;item.ItemId&#125; ; &#123;item.ItemDesсription&#125; ; &#123;item.Cost&#125;&quot;);</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>表达式item.ItemId &#x3D; 1 anditem.ItemDescription &#x3D; “Pen”将调用TrySetMember方法，数字将作为第一个变体中的第二个参数传递给该方法，而字符串 “Pen” 将在第二个变体中传递。<br>返回item.Cost 调用TryGetMember方法。<br>此外，该item对象还IncrementCost定义了一个方法，该方法表示匿名委托的操作delegate (int x) { item.Cost+&#x3D;x; return item.Cost; }。委托获取数字x，将Cost属性增加此数字并返回新值item.Cost.。当调用此方法时，TryInvokeMember将访问该方法。因此，item.Cost财产的价值将增加。</p>
+<p>优点是您可以在使用动态对象时重新定义动态对象的行为，即，您实际上可以自己实现可动态扩展的对象。</p>
+<p>在这一部分中，我们检查了示例的用法DynamicObject和ExpandoObject示例。</p>
+<p>在 .NET 中使用 IronPython。<br>看起来为什么我们需要更多的语言，尤其是那些在另一种 C# 语言中使用的语言？但是，DLR环境的关键点之一是对IronPython和IronRuby等语言的支持。这在编写功能性客户端脚本时很有用。甚至可以说，现在客户端脚本的创建已经很普遍了，很多程序甚至游戏都支持添加用各种语言编写的客户端脚本。此外，可能有一些Python库的功能在 .NET 中可能不可用。在这种情况下，IronPython 可以再次帮助我们。</p>
+<p>让我们看一个例子。首先，我们需要添加所有必要的NuGet包。为此，我将使用批处理管理器。首先，让我们添加DLR包（图 4）。</p>
+<p>图 4</p>
+<p>图 4 - 添加 DLR 包<br>接下来，添加IronPython（图 5）：</p>
+<p>图 5</p>
+<p>图 5 - 添加 IronPython 包<br>让我们添加最简单的代码，并且我们已经使用了 python：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            ScriptEngine engine = Python.CreateEngine();</span><br><span class="line">            engine.Execute(&quot;print &#x27;hello, world&#x27;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>结果，我们有（图6）：</p>
+<p>图 6</p>
+<p>图 6 - 使用 IronPyton<br>这里使用了 Python 表达式，print ‘hello, world’ 它将 a 输出string到控制台。要创建执行脚本的引擎，需要ScriptEngine使用该类。它的Execute()方法执行脚本。<br>此外，我们可以创建一个文件，例如helloword.py并将文件的内容直接粘贴到我们的代码中：</p>
+<p>engine.ExecuteFile(“D:&#x2F;&#x2F;helloword.py”);<br>此外，该ScriptScope对象允许您通过接收或安装脚本与脚本进行交互。但是，这已经超出了本文的范围。</p>
+<p>结论<br>总之，我们研究了动态语言运行时 (DLR) 在 C# 中的工作方式、如何使用DynamicObject以及ExpandoObjectIronPython 如何在 .NET 中最简单的示例中工作。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Microsoft/" rel="tag"><i class="fa fa-tag"></i> 微软</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/1504.html" rel="prev" title="代码改变世界">
+      <i class="fa fa-chevron-left"></i> 代码改变世界
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/560.html" rel="next" title="C#中的寻路算法">
+      C#中的寻路算法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Code8"
+      src="/images/code8.jpg">
+  <p class="site-author-name" itemprop="name">Code8</p>
+  <div class="site-description" itemprop="description">编程创造未来</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="/categories/" title="&#x2F;categories&#x2F;">📖 分类列表</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Android/" title="&#x2F;categories&#x2F;Android&#x2F;">👉 Android</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Linux/" title="&#x2F;categories&#x2F;Linux&#x2F;">👉 Linux</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Java/" title="&#x2F;categories&#x2F;Java&#x2F;">👉 Java</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/CSharp/" title="&#x2F;categories&#x2F;CSharp&#x2F;">👉 C#</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/" title="&#x2F;tags&#x2F;">💬 标签列表</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Ubuntu/" title="&#x2F;tags&#x2F;Ubuntu&#x2F;">✍ Ubuntu</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Nodejs/" title="&#x2F;tags&#x2F;Nodejs&#x2F;">✍ Nodejs</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Github/" title="&#x2F;tags&#x2F;Github&#x2F;">✍ Github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Hexo/" title="&#x2F;tags&#x2F;Hexo&#x2F;">🔔 Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Microsoft/" title="&#x2F;tags&#x2F;Microsoft&#x2F;">🔔 微软</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Php/" title="&#x2F;tags&#x2F;Php&#x2F;">🔔 Php</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Code8</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
