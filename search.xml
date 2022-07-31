@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>微软在移动优先、云优先的世界中处于什么位置？</title>
+    <url>/16583.html</url>
+    <content><![CDATA[<p>微软继续推广移动优先、云优先的游戏计划。这包括影响他们全面工作的变化。今天在西雅图举行的 Microsoft Build 大会上，微软提到了一些关于他们在云和移动计划方面的立场的统计数据。</p>
+<p>Microsoft Windows 10 月度活跃用户<br>微软世界的核心是他们的核心操作系统，Windows 10。Windows 10 月活跃用户达到 5 亿</p>
+<p>商业办公 365 月活跃用户<br>Microsoft Office 365 现在拥有 1 亿月度商业用户。由于 Office 已成为许多企业用户的核心生产力平台，Microsoft 正在为 Office 开发人员提供更多机会。这包括他们在上周的一次教育会议上谈到的微软团队的公告，开发人员可以访问该公告以添加扩展来执行诸如添加通知、扩展和可操作消息之类的操作。开发人员还可以使用新的 Microsoft Graph API 来利用 Microsoft 内部的数据和智能。最后，Microsoft 正在为 Azure 上的生产应用程序提供一种方式，现在可以向数以亿计的 ISV 活跃办公用户公开。</p>
+<span id="more"></span>
+<p>Cortana 月度活跃用户<br>Cortana 1.41 亿活跃用户。虽然这是一个很大的数字，但它包括使用任何类型的 Cortana 交互（包括语音）的人。</p>
+<p>Azure Active Directory 中的组织12<br>Azure Active Directory 在组织内继续增长。现在使用 Azure Active Directory 的组织已增加到 1200 万个。</p>
+<p>使用 Microsoft 云的财富 500 强公司<br>虽然微软云可能不是领导者，但值得注意的是，财富 500 强公司正在使用微软云。使用微软云的财富 500 强公司的百分比现在超过 90%。</p>
+<p>面向开发人员的认知服务<br>一个很大的嗡嗡声是认知服务。随着数据和智能的增长，认知服务现在可以大大增加开发人员的能力。微软声称是认知服务领域最广泛的产品之一，为开发人员提供了 29 种不同的服务。开发人员可以利用的这些服务包括视觉、语音、语言、搜索等。添加的一些新服务包括必应自定义搜索、自定义决策服务、视频索引器、演示翻译和自定义视觉服务。</p>
+<p>将它们加在一起<br>这些数字只是触及了微软正在发生的事情的表面。寻找来自 Microsoft Build 的其他一些新闻的报道。</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>微软</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>代码改变世界</title>
+    <url>/1504.html</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![img](/pic/img20220727.png)</span><br><span class="line">sudo apt-get update</span><br><span class="line">./RNU-ME.sh</span><br></pre></td></tr></table></figure>
+
+
+<span id="more"></span>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">C</span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> attributes = [</span><br><span class="line">  <span class="string">&#x27;autocomplete=&quot;off&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;autocorrect=&quot;off&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;autocapitalize=&quot;off&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;spellcheck=&quot;false&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;contenteditable=&quot;true&quot;&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> attributesStr = attributes.<span class="title function_">join</span>(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;after_post_render&#x27;</span>, <span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="regexp">/&lt;figure class=&quot;highlight ([a-zA-Z]+)&quot;&gt;.*?&lt;\/figure&gt;/</span>.<span class="title function_">test</span>(data.<span class="property">content</span>)) &#123;</span><br><span class="line">    data.<span class="property">content</span> = data.<span class="property">content</span>.<span class="title function_">replace</span>(<span class="regexp">/&lt;figure class=&quot;highlight ([a-zA-Z]+)&quot;&gt;.*?&lt;\/figure&gt;/</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> language = <span class="title class_">RegExp</span>.<span class="property">$1</span> || <span class="string">&#x27;plain&#x27;</span></span><br><span class="line">      <span class="keyword">var</span> lastMatch = <span class="title class_">RegExp</span>.<span class="property">lastMatch</span></span><br><span class="line">      lastMatch = lastMatch.<span class="title function_">replace</span>(<span class="regexp">/&lt;figure class=&quot;highlight /</span>, <span class="string">&#x27;&lt;figure class=&quot;iseeu highlight /&#x27;</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;&lt;div class=&quot;highlight-wrap&quot;&#x27;</span> + attributesStr + <span class="string">&#x27;data-rel=&quot;&#x27;</span> + language.<span class="title function_">toUpperCase</span>() + <span class="string">&#x27;&quot;&gt;&#x27;</span> + lastMatch + <span class="string">&#x27;&lt;/div&gt;&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> data</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+        <tag>Php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>执行sudo apt-get update时，无法获得锁 /var/lib/apt/lists/lock</title>
+    <url>/59101.html</url>
+    <content><![CDATA[<p>百度到的方法是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo kill 2224</span><br></pre></td></tr></table></figure>
+<p>可是我发现不行，然后又找到其他方法，也不行。<br>后来发现是自己不小心虚拟机多开了几个，<br>干脆把电脑重启，才解决了这个问题。<br>只把虚拟机重启是不行的。</p>
+<p>原因：刚装好的Ubantu系统，内部缺少很多软件源，这时，系统会自动启动软件源更新进程“apt-get”，并且它会一直存活。由于它在运行时，会占用软件源更新时的系统锁（以下称“系统更新锁”，此锁文件在“&#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;”目录下），而当有新的apt-get进程生成时，就会因为得不到系统更新锁而出现”E: 无法获得锁 &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;lock - open (11: Resource temporarily unavailable)”错误提示！因此，我们只要将原先的apt-get进程杀死，从新激活新的apt-get进程，就可以让新立德软件管理器正常工作了！</p>
+<span id="more"></span>
+<p>问题描述<br>在执行sudo apt-get update时，遇到如下问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">E: 无法获得锁 /var/lib/apt/lists/lock。锁正由进程 2224（apt-get）持有</span><br><span class="line">N: 请注意，直接移除锁文件不一定是合适的解决方案，且可能损坏您的系统。</span><br><span class="line">E: 无法对目录 /var/lib/apt/lists/ 加锁</span><br></pre></td></tr></table></figure>
+<p>根据提示，是因为进程2224占用了这个锁，linux系统一次只允许一个进程执行apt-get，因此只需要把这个进程杀掉就可以：<br>解决方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo kill 2224</span><br></pre></td></tr></table></figure>
+<p>问题解决！</p>
+<h3 id="解决E-Could-not-get-lock-x2F-var-x2F-lib-x2F-apt-x2F-lists-x2F-lock-open-11-Resource-temporarily-unavailable"><a href="#解决E-Could-not-get-lock-x2F-var-x2F-lib-x2F-apt-x2F-lists-x2F-lock-open-11-Resource-temporarily-unavailable" class="headerlink" title="解决E:Could not get lock &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;lock - open (11: Resource temporarily unavailable)"></a>解决E:Could not get lock &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;lock - open (11: Resource temporarily unavailable)</h3><p>出现这个问题的原因可能是有另外一个程序正在运行，导致资源被锁不可用。而导致资源被锁的原因，可能是上次安装时没正常完成，而导致出现此状况。</p>
+<p>解决方法：输入以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo rm /var/cache/apt/archives/lock</span><br><span class="line">sudo rm /var/lib/dpkg/lock</span><br></pre></td></tr></table></figure>
+<p>之后再安装想装的包，即可解决</p>
+<p>今天玩ubuntu的时候，在弄更新源的时候，突然出现以下错误：<br>[1]+ Stopped                 sudo apt-get update<br>haiquan@haiquan-desktop:~$ sudo apt-get update<br>E: Could not get lock &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;lock - open (11: Resource temporarily unavailable)<br>E: Unable to lock the list directory<br>开始以为是权限不够，就是用 sudo apt-get update,发现还是报错，问题没有解决。于是上网搜索了一下，答案如下：<br>问题应该是之前那个更新被强制取消的问题，进程仍然还在。用这个命令查看一下：<br>ps -e | grep apt<br>显示结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">6362 ? 00:00:00 apt</span><br><span class="line">6934 ? 00:00:00 apt-get</span><br><span class="line">7368 ? 00:00:00 synaptic</span><br></pre></td></tr></table></figure>
+<p>然后就执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo killall apt</span><br><span class="line">sudo killall apt-get</span><br><span class="line">sudo killall synaptic</span><br></pre></td></tr></table></figure>
+<p>再次在终端里查看ps -e | grep apt 没有任何结果了</p>
+<p>继续执行sudo apt-get update</p>
+<p>OK！</p>
+<p>原因：刚装好的Ubantu系统，内部缺少很多软件源，这时，系统会自动启动软件源更新进程“apt-get”，并且它会一直存活。由于它在运行时，会占用软件源更新时的系统锁（以下称“系统更新锁”，此锁文件在“&#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;”目录下），而当有新的apt-get进程生成时，就会因为得不到系统更新锁而出现”E: 无法获得锁 &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;lock - open (11: Resource temporarily unavailable)”错误提示！因此，我们只要将原先的apt-get进程杀死，从新激活新的apt-get进程，就可以让新立德软件管理器正常工作了！</p>
+<p>这时，你可以按一下步骤来解决：<br>1、输入以下命令：“ps -aux  &gt; temp.txt”.敲回车确定。这时会有“warning”出现，但不予理会。<br>2、输入以下命令：“grep -n apt-get temp.txt”键入回车确定。而后从命令输出中找到 apt-get 进程的PID。<br>3、输入以下命令：“sudo kill <PID>”。<br>4、完成。</p>
+<p>or<br>如果提示错误:E: Could not get lock &#x2F;var&#x2F;lib&#x2F;dpkg&#x2F;lock - open (11 Resource temporarily unavailable)<br>输入</p>
+<p>sudo rm &#x2F;var&#x2F;lib&#x2F;apt&#x2F;lists&#x2F;lock<br>即可</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu的系统设置不见了找回,然后更新软件源</title>
+    <url>/57909.html</url>
+    <content><![CDATA[<p>网上查到的方法都是这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sudo apt-get update</span><br><span class="line">$sudo apt-get install unity-control-center</span><br><span class="line">$sudo apt install gnome-control-center</span><br></pre></td></tr></table></figure>
+<p>我现在遇到一个新情况，那就是我的更新源出错了。<br>我就是要找到【系统设置】换更新源，<br>现在让我直接执行update，会提示很多错误。</p>
+<p>我在随便操作的时候，突然进入&#x2F;etc&#x2F;apt&#x2F;<br><img src="/pic/img20220727.png" alt="img"></p>
+<p>当我双击sources.list的时候，就跳出了这个更新源的设置，<br>于是我顺便换了更新源，然后再执行那两条命令即可。</p>
+<p>另外，系统设置是点屏幕右上角的开关按钮，和关机按钮在一起。</p>
+<h3 id="Ubuntu-如何更新软件源-阿里源、华为源、清华源等"><a href="#Ubuntu-如何更新软件源-阿里源、华为源、清华源等" class="headerlink" title="Ubuntu 如何更新软件源(阿里源、华为源、清华源等)"></a>Ubuntu 如何更新软件源(阿里源、华为源、清华源等)</h3><p>前言<br>Ubuntu系统自带的更新源服务器在国外，下载速度一般很慢，所以更换为国内源就成为必要操作了。</p>
+<span id="more"></span>
+<p>一、Ubuntu 更新软件源的方法<br>Ubuntu 更新软件源的方法：<br>1、打开终端；<br>2、输入命令备份原有软件源文件；<br>3、打开sources.list文件并添加新的软件源地址；<br>4、输入命令更新系统软件源地址。</p>
+<p>二、具体步骤<br>具体步骤如下：<br>1、使用快捷键【ctrl+alt+t】打开终端。<br>2、输入以下命令备份原有软件源文件。<br>cp &#x2F;etc&#x2F;apt&#x2F;sources.list &#x2F;etc&#x2F;apt&#x2F;sources.list.bak_yyyymmdd<br>3、再输入以下命令打开sources.list文件并添加新的软件源地址。<br>vim &#x2F;etc&#x2F;apt&#x2F;sources.list #打开sources.list文件</p>
+<p>PS： 新安装的Ubuntu可能没有安装Vim, 用如下命令先安装Vim：<br>sudo apt-get install vim-gtk</p>
+<p>在文件末尾添加新的软件源地址，常用国内源地址如下：<br>#阿里源地址<br>deb <a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> bionic main restricted universe multiverse<br>deb <a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> bionic-security main restricted universe multiverse<br>deb <a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> bionic-updates main restricted universe multiverse<br>deb <a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> bionic-proposed main restricted universe multiverse<br>deb <a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> bionic-backports main restricted universe multiverse<br>deb-src <a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> bionic main restricted universe multiverse<br>deb-src <a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> bionic-security main restricted universe multiverse<br>deb-src <a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> bionic-updates main restricted universe multiverse<br>deb-src <a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> bionic-proposed main restricted universe multiverse<br>deb-src <a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a> bionic-backports main restricted universe multiverse</p>
+<p>#华为源地址<br>deb <a href="https://repo.huaweicloud.com/ubuntu/">https://repo.huaweicloud.com/ubuntu/</a> focal main restricted<br>deb <a href="https://repo.huaweicloud.com/ubuntu/">https://repo.huaweicloud.com/ubuntu/</a> focal-updates main restricted<br>deb <a href="https://repo.huaweicloud.com/ubuntu/">https://repo.huaweicloud.com/ubuntu/</a> focal universe<br>deb <a href="https://repo.huaweicloud.com/ubuntu/">https://repo.huaweicloud.com/ubuntu/</a> focal-updates universe<br>deb <a href="https://repo.huaweicloud.com/ubuntu/">https://repo.huaweicloud.com/ubuntu/</a> focal-backports main restricted universe<br>deb <a href="https://repo.huaweicloud.com/ubuntu/">https://repo.huaweicloud.com/ubuntu/</a> focal-security main restricted<br>deb <a href="https://repo.huaweicloud.com/ubuntu/">https://repo.huaweicloud.com/ubuntu/</a> focal-security universe</p>
+<p>#中科大源地址<br>deb <a href="https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a> bionic main restricted universe multiverse<br>deb-src <a href="https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a> bionic main restricted universe multiverse<br>deb <a href="https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a> bionic-updates main restricted universe multiverse<br>deb-src <a href="https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a> bionic-updates main restricted universe multiverse<br>deb <a href="https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a> bionic-backports main restricted universe multiverse<br>deb-src <a href="https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a> bionic-backports main restricted universe multiverse<br>deb <a href="https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a> bionic-security main restricted universe multiverse<br>deb-src <a href="https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a> bionic-security main restricted universe multiverse<br>deb <a href="https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a> bionic-proposed main restricted universe multiverse<br>deb-src <a href="https://mirrors.ustc.edu.cn/ubuntu/">https://mirrors.ustc.edu.cn/ubuntu/</a> bionic-proposed main restricted universe multiverse</p>
+<p>#163源地址<br>deb <a href="http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</a> bionic main restricted universe multiverse<br>deb <a href="http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</a> bionic-security main restricted universe multiverse<br>deb <a href="http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</a> bionic-updates main restricted universe multiverse<br>deb <a href="http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</a> bionic-proposed main restricted universe multiverse<br>deb <a href="http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</a> bionic-backports main restricted universe multiverse<br>deb-src <a href="http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</a> bionic main restricted universe multiverse<br>deb-src <a href="http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</a> bionic-security main restricted universe multiverse<br>deb-src <a href="http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</a> bionic-updates main restricted universe multiverse<br>deb-src <a href="http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</a> bionic-proposed main restricted universe multiverse<br>deb-src <a href="http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</a> bionic-backports main restricted universe multiverse</p>
+<p>#清华源地址<br>deb <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic main restricted universe multiverse<br>deb-src <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic main restricted universe multiverse<br>deb <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-updates main restricted universe multiverse<br>deb-src <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-updates main restricted universe multiverse<br>deb <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-backports main restricted universe multiverse<br>deb-src <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-backports main restricted universe ultiverse<br>deb <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-security main restricted universe multiverse<br>deb-src <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-security main restricted universe multiverse<br>deb <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-proposed main restricted universe multiverse<br>deb-src <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</a> bionic-proposed main restricted universe ultiverse</p>
+<p>4、输入命令更新系统软件源地址:<br>apt-get update<br>apt-get upgrade</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>换电脑把hexo从GitHub上克隆到本地-恢复使用操作</title>
+    <url>/25333.html</url>
+    <content><![CDATA[<p>先从github上克隆下来：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:code8cn/code8cn.github.io.git</span><br></pre></td></tr></table></figure>
+<p>然后进入目录执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>当然要已经安装好hexo</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>一、配置环境<br>1.安装git（点击进入Git官网，如果嫌下载慢自行百度解决~）<br>2.Git与远程库进行SSH授权(点击查看教程Git的安装-与远程仓库GitHub配置)<br>2.安装node.js  （点击进入nodejs官网直接下载）</p>
+<p>二.配置本地博客<br>1.安装hexo</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>安装好后不需要初始化（hexo init）<br>2.克隆GitHub上保存的hexo网站原文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:code8cn/code8cn.github.io.git</span><br></pre></td></tr></table></figure>
+<p>3.生成缺少的网站文件</p>
+<p>进入克隆的目录，执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>因为上传GitHub时有.gitignore文件，所以上传到github上默认是忽略掉 node_modules等文件夹，即仓库的hexo分支并没有存储这些文件，所以需要install生成。</p>
+<p>三.生成、部署（推荐）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>刚恢复本地hexo最好生成部署一下，接下来就像以前一样了。</p>
+<p>参考资料1：<a href="https://www.zhihu.com/question/21193762/answer/489124966">https://www.zhihu.com/question/21193762/answer/489124966</a><br>参考资料2：<a href="https://www.jianshu.com/p/0b1fccce74e0">https://www.jianshu.com/p/0b1fccce74e0</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu 安装nodejs最新版本简单方法</title>
+    <url>/33390.html</url>
+    <content><![CDATA[<p>···<br>sudo apt update -y<br>sudo apt install -y npm<br>sudo npm config set registry <a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a><br>sudo npm install n -g<br>sudo n stable<br>···</p>
+<h3 id="ubuntu-上安装node-js-的简单方法"><a href="#ubuntu-上安装node-js-的简单方法" class="headerlink" title="ubuntu 上安装node.js 的简单方法"></a>ubuntu 上安装node.js 的简单方法</h3><p>一、安装<br>1.$ sudo apt-get install nodejs<br>2.$ sudo apt-get install npm</p>
+<p>二、升级<br>    1.升级npm命令如下：</p>
+<p>$ sudo npm install npm -g<br>&#x2F;usr&#x2F;local&#x2F;bin&#x2F;npm -&gt; &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules&#x2F;npm&#x2F;bin&#x2F;npm-cli.js<br><a href="mailto:&#110;&#x70;&#109;&#64;&#x32;&#x2e;&#x31;&#x34;&#46;&#x32;">&#110;&#x70;&#109;&#64;&#x32;&#x2e;&#x31;&#x34;&#46;&#x32;</a> &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules&#x2F;npm<br>2.升级node.js命令如下：<br>$ npm install –g n<br>$ n latest(升级node.js到最新版)  or $ n stable（升级node.js到最新稳定版）<br>    n后面也可以跟随版本号比如：$ n v0.10.26 或者 $ n 0.10.26</p>
+<p>三、npm镜像替换为淘宝镜像</p>
+<p>1.得到原本的镜像地址<br>$ npm get registry </p>
+<blockquote>
+<p><a href="https://registry.npmjs.org/">https://registry.npmjs.org/</a><br>设成淘宝的<br>$ npm config set registry <a href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org/</a></p>
+</blockquote>
+<p>2.换成原来的<br>$ npm config set registry <a href="https://registry.npmjs.org/">https://registry.npmjs.org/</a></p>
+<span id="more"></span>
+<p>四、选装cnpm<br>1.说明：因为npm安装插件是从国外服务器下载，受网络影响大，可能出现异常，如果npm的服务器在中国就好了，所以我们乐于分享的淘宝团队干了这事。！来自官网：“这是一个完整 npmjs.org 镜像，你可以用此代替官方版本(只读)，同步频率目前为 10分钟 一次以保证尽量与官方服务同步。”；<br>2.官方网址：<a href="http://npm.taobao.org;/">http://npm.taobao.org；</a><br>3.安装：命令提示符执行npm install cnpm -g –registry&#x3D;<a href="https://registry.npm.taobao.org;/">https://registry.npm.taobao.org；</a>  注意：安装完后最好查看其版本号cnpm -v或关闭命令提示符重新打开，安装完直接使用有可能会出现错误；</p>
+<p>注：cnpm跟npm用法完全一致，只是在执行命令时将npm改为cnpm（以下操作将以cnpm代替npm）</p>
+<p>五、全局安装与本地安装<br>  npm 的包安装分为本地安装（local）、全局安装（global）两种，从敲的命令行来看，差别只是有没有-g而已，</p>
+<p>   比如我们使用 npm 命令安装常用的 Node.js web框架模块 express:</p>
+<p>$ npm install express          # 本地安装<br>$ npm install express -g       # 全局安装</p>
+<p>六、卸载<br>1.先卸载 npm<br>  sudo npm uninstall npm -g<br>2.卸载nodejs<br>  sudo apt-get remove nodejs<br>方式二：nvm安装<br>安装<br>wget -qO- <a href="https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh">https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh</a> | bash<br>使用<br>安装成功后,需要关闭xshell，重新启动。nvm才会生效。</p>
+<p>使用command -v nvm查看nvm是否安装成功</p>
+<p>root@linuxidc:~# command -v nvm<br>nvm<br>查看已安装<br>通过nvm ls查看已安装的版本</p>
+<p>$ nvm ls<br>            N&#x2F;A<br>node -&gt; stable (-&gt; N&#x2F;A) (default)<br>iojs -&gt; N&#x2F;A (default)<br>查看有哪些可安装<br>通过nvm ls-remote查看可使用版本</p>
+<p>$ nvm ls-remote<br>        v0.1.14<br>        v0.1.15<br>        v0.1.16<br>        v0.1.17<br>        v0.1.18<br>…<br>安装nodejs<br>通过nvm install 7.8.0来安装，后面的版本号我们可以任意选择</p>
+<p>root@linuxidc:~# nvm install 7.8.0<br>Downloading and installing node v6.2.0…<br>Downloading <a href="https://nodejs.org/dist/v7.8.0/node-v7.8.0-linux-x64.tar.xz">https://nodejs.org/dist/v7.8.0/node-v7.8.0-linux-x64.tar.xz</a>…<br>我们上面使用的是国外的服务器下载，很慢，耐心等待，nodejs和nvm成功安装！</p>
+<h3 id="ubuntu-安装nodejs"><a href="#ubuntu-安装nodejs" class="headerlink" title="ubuntu 安装nodejs"></a>ubuntu 安装nodejs</h3><p>安装nodeJS之前，如果没有安装g++及 libssl-dev，则先要安装好，安装方法如下：</p>
+<p>$ sudo apt-get install g++<br>$ sudo apt-get install libssl-dev</p>
+<p>接下来，就可以下载安装nodejs了，，下面是安装步骤：</p>
+<p>&#x2F;&#x2F; 下载<br>$ wget <a href="http://nodejs.org/dist/v0.10.24/node-v0.10.24.tar.gz">http://nodejs.org/dist/v0.10.24/node-v0.10.24.tar.gz</a><br>&#x2F;&#x2F; 解压：<br>$ tar -zxf node-v0.10.14.tar.gz $ cd node-v0.10.14<br>&#x2F;&#x2F; 默认安装： （默认在home目录下）<br>&#x2F;&#x2F;选择目录安装（将nodejs安装在&#x2F;usr&#x2F;local&#x2F;node目录下）<br>$ .&#x2F;configure -–prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;node<br>$ sudo make<br>$ sudo make install<br>这也是ubuntu 安装.tar.gz格式软件的方法。<br>　　1、tar -zxf　　***.tar.gz<br>　　2、cd 进入解压的目录<br>　　3、sudo .&#x2F;configure     –prefix　　&#x3D;　　&#x2F;usr&#x2F;local&#x2F;软件名 （–prefix 是软件装的目录）<br>　　4、sudo make<br>　　5、sudo make install<br>注：<br>　　1、–prefix 指定安装路径<br>　　不指定prefix，则可执行文件默认放在&#x2F;usr &#x2F;local&#x2F;bin，库文件默认放在&#x2F;usr&#x2F;local&#x2F;lib，配置文件默认放在&#x2F;usr&#x2F;local&#x2F;etc。其它的资源文件放在&#x2F;usr &#x2F;local&#x2F;share。你要卸载这个程序，要么在原来的make目录下用一次make uninstall（前提是make文件指定过uninstall）,要么去上述目录里面把相关的文件一个个手工删掉。<br>指定prefix，直接删掉一个文件夹就够了。　　</p>
+<p>　　2、axconfig: port 1 not active</p>
+<pre><code>       axconfig: port 2 not active
+    出现这样的错误
+</code></pre>
+<p>　　（1）通过下面的方法卸载<br>　　　　sudo apt-get remove –purge node<br>　　　　sudo apt-get clean<br>　　（2）重新编译安装<br>　　　　sudo .&#x2F;configure<br>　　　　sudo make<br>　　　　sudo make install<br>　　　　重新编译来一边 OK 解决<br>　　（3）查看版本<br>　　　　输入node –v 或者node –version可以查看node.js当前的版本 </p>
+<p>　　　　可能出现bash：usr&#x2F;sbin&#x2F;node 没有那个文件或目录 错误，使用sudo node -v </p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>Nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vercel绑定域名 解析@cname</title>
+    <url>/30233.html</url>
+    <content><![CDATA[<p>稍后添加</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一台电脑配置多个GitHub 或 其他git 仓库账号的方法</title>
+    <url>/22981.html</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 取消全局设置</span><br><span class="line">git config --global --unset user.name</span><br><span class="line">git config --global --unset user.email</span><br><span class="line"></span><br><span class="line"># 进入项目目录</span><br><span class="line">git init</span><br><span class="line">git config user.email &quot;xxxxx@xxx.com&quot;</span><br><span class="line">git config user.name &quot;xxxx&quot;</span><br><span class="line"></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+</search>
