@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/code8cn.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/code8cn.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":"ture","async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在本文中，我们将快速概述 Google 的 Go 编程语言。 目录  介绍 Go Hello, World! 注释 分号 功能 入口点 变量 短变量声明 内置类型 用户定义的类型 结构 界面 数组 切片 常数 指针 声明 匿名函数 闭包 方法 参考 历史  介绍Go 是一种由 Google 创建的通用编程语言。这是一个开源项目，旨在提高程序员的工作效率。Go 非常有表现力和干净。它的并发编程能力帮">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go语言 快速概览">
+<meta property="og:url" content="http://example.com/48578.html">
+<meta property="og:site_name" content="代码吧">
+<meta property="og:description" content="在本文中，我们将快速概述 Google 的 Go 编程语言。 目录  介绍 Go Hello, World! 注释 分号 功能 入口点 变量 短变量声明 内置类型 用户定义的类型 结构 界面 数组 切片 常数 指针 声明 匿名函数 闭包 方法 参考 历史  介绍Go 是一种由 Google 创建的通用编程语言。这是一个开源项目，旨在提高程序员的工作效率。Go 非常有表现力和干净。它的并发编程能力帮">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-01T09:59:07.000Z">
+<meta property="article:modified_time" content="2022-08-01T10:15:43.993Z">
+<meta property="article:author" content="Code8">
+<meta property="article:tag" content="微软">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/48578.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Go语言 快速概览 | 代码吧</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">代码吧</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">代码改变世界</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/48578.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/code8.jpg">
+      <meta itemprop="name" content="Code8">
+      <meta itemprop="description" content="编程创造未来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码吧">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Go语言 快速概览
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-08-01 17:59:07 / 修改时间：18:15:43" itemprop="dateCreated datePublished" datetime="2022-08-01T17:59:07+08:00">2022-08-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在本文中，我们将快速概述 Google 的 Go 编程语言。</p>
+<p>目录</p>
+<ol>
+<li>介绍</li>
+<li>Go Hello, World!</li>
+<li>注释</li>
+<li>分号</li>
+<li>功能<br> 入口点</li>
+<li>变量<br> 短变量声明</li>
+<li>内置类型</li>
+<li>用户定义的类型<br> 结构<br> 界面</li>
+<li>数组</li>
+<li>切片</li>
+<li>常数</li>
+<li>指针</li>
+<li>声明</li>
+<li>匿名函数<br> 闭包</li>
+<li>方法</li>
+<li>参考</li>
+<li>历史</li>
+</ol>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Go 是一种由 Google 创建的通用编程语言。这是一个开源项目，旨在提高程序员的工作效率。Go 非常有表现力和干净。它的并发编程能力帮助程序员编写需要充分利用多核和联网机器的程序。Go 是静态类型和编译的编程语言。Go 将程序快速编译成机器代码。它还具有垃圾收集功能。垃圾收集使并发代码更容易编写。除此之外，Go 还有一个非常丰富的标准库。</p>
+<span id="more"></span>
+<p>Go Hello, World!<br>让我们看看下面的“你好，世界！” 用 Go 编写的程序：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line">func <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    fmt.<span class="title class_">Println</span>(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从这个 hello world 程序中，我们得到了以下内容：</p>
+<ol>
+<li>一个名为main的包名。但实际上它是什么？</li>
+</ol>
+<p>好吧，每个 Go 程序都是由包组成的。我们要么编写一个库，要么编写一个可执行程序。可执行程序属于包main。这意味着可执行程序开始在包main中运行。所以在一个 Go 程序的开头，需要通过以下方式指定包名：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br></pre></td></tr></table></figure>
+
+<p>这将告诉编译器这个程序是一个可执行程序。不是图书馆。</p>
+<p>但是如果我们写了一个库，这意味着我们正在写一个新的包，我们给这个包起个名字。假设我们的新库&#x2F;包名称将是‘simplelib’. 如果是这样，那么在我们新库&#x2F;包的每个源文件的开头，必须存在以下行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package simplelib</span><br></pre></td></tr></table></figure>
+<p>这就是我们告诉编译器这个源文件属于包’ simplelib ‘的方式。</p>
+<ol start="2">
+<li>我们发现了一个 import 语句，它正在导入名为“ fmt ”的东西。</li>
+</ol>
+<p>import 语句用于将外部 Go 包导入另一个 Go 包&#x2F;程序。非常类似于 C 的 include 预处理器指令。</p>
+<p>import 语句的使用方式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &quot;package_name&quot;</span><br></pre></td></tr></table></figure>
+
+<p>或者（在导入多个包时推荐使用此语法）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import (</span><br><span class="line">    &quot;package_name&quot;</span><br><span class="line">    &quot;package_name2&quot;</span><br><span class="line">    &quot;package_name3&quot;</span><br><span class="line">    &quot;package_nameN&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>在 hello world 示例中，导入了一个名为fmt的包。包fmt使用类似于 Cprintf和scanf. “动词”格式源自 C，但更简单。所以这个包在与控制台窗口交互时是必需的。</p>
+<ol start="3">
+<li>一个名为 的用户定义函数main。</li>
+</ol>
+<p>这个函数类似于 C 的入口点main。Go 程序的代码执行从这个函数开始。</p>
+<ol start="4">
+<li>在main函数内部，另一个名为的函数Println被调用以打印“Hello, World!”。信息。</li>
+</ol>
+<p>该Println函数用于在控制台窗口上打印一些东西。这个函数属于 fmt 包，这就是为什么这个包是在 hello world 程序的一开始就被导入的。</p>
+<p>GoPrintln非常有用。我们可以使用此函数打印字符串或整数等值。甚至，我们可以打印更复杂的东西，比如数组。我们不需要任何循环来打印数组的元素。该Println函数在打印所有值后自动插入换行符。</p>
+<p>现在，我们将介绍 Go 编程语言的一些特性。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>我们程序员使用注释来描述一段代码。这使得代码更容易理解和阅读。Go 中的注释主要有两种形式：</p>
+<p>单行注释<br>多行注释<br>以下是单行注释的示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// This is a single line comment.</span><br></pre></td></tr></table></figure>
+<p>以下是多行注释的示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/* This is a multi line comment.</span><br><span class="line">   This is the second line of this multi line comment.</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<p>现在我们可以看到，在 Go 中做注释类似于 C++、C#、Java 等。</p>
+<h2 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h2><p>与 C、C++、C#、Java 等编程语言不同，Go 中不需要使用分号来指示语句的终止。Go 的词法分析器使用一个简单的规则来推断语句的结尾。</p>
+<p>惯用的 Go 程序仅在诸如 for 循环子句之类的地方使用分号来分隔初始值设定项、条件和延续元素。它们也是分隔一行中的多个语句所必需的。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>在 Go 中，函数创建具有以下语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func function_name(input_parameter_list) (return_type_list) &#123;</span><br><span class="line">    function_stataments</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到函数创建以 func 关键字开始。然后我们必须指定函数的名称。函数的名称应该是任何有效的 Go 标识符。之后，我们把所有的输入参数。如果一个函数的参数列表中有多个参数，则需要用逗号分隔。而且，参数必须由大括号()包围。然后我们指定函数的返回类型。但是如果我们的函数不需要返回任何值，那么我们可以省略返回类型。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func sing() &#123;</span><br><span class="line">    // I&#x27;m singing!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另一个在两个数字之间进行加法并将结果作为整数值返回的函数示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func add(x int, y int) int &#123;</span><br><span class="line">    return x + y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>与 C 不同，Go 中的函数可以有多个返回值，这是一个内置特性。在这种情况下，返回类型需要用大括号 ( ) 括起来，并且所有返回类型都必须通过逗号运算符分隔。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func getall() (int, string) &#123;</span><br><span class="line">    return 10, &quot;that&#x27;s all!&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而当我们调用该函数时，会通过这种方式获取多个返回值（本示例代码使用短变量声明形式，我们将在“短变量声明”部分讨论）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i, s := getall()</span><br></pre></td></tr></table></figure>
+
+<p>现在变量i包含第一个返回值（即10）并且变量s包含第二个返回值（它是一个字符串并且是“就是这样！”）。</p>
+<p>在 Go 中，这种多返回值特性通常用于从函数返回结果值和错误值。</p>
+<p>入口点<br>一个名为 as 的全局函数main被识别为程序的入口点：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123; </span><br><span class="line">    // function’s body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请注意，Go 的 main 函数没有用于访问命令行参数的参数（如 C 中的 ,​​ ）argc。argv但是，一个名为os的 Go 包提供了该问题的解决方案。os包的Args变量提供对原始命令行参数的访问。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;os&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    fmt.Println(len(os.Args), os.Args)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>Go 中的变量声明具有以下语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var identifier_list类型</span><br><span class="line">var identifier_list = initializer_expression_list</span><br><span class="line">var identifier_list type = initializer_expression_list</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var i int</span><br><span class="line">var a, b, c int</span><br><span class="line">var k = 0</span><br><span class="line">var x, y int = 12, 9</span><br></pre></td></tr></table></figure>
+<p>我们可以看到 Go 中的变量声明以var关键字开头。而且，并不总是需要明确指定类型。我们可以让编译器从初始化表达式中推断出变量的类型。这就像我们在 C++11 中使用auto关键字一样。</p>
+<p>短变量声明<br>短变量声明具有以下语法，不需要在声明开头使用var关键字并自动推断变量的类型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">identifier_list := initializer_expression_list</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i := 80</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b, c := 10, 20, 30</span><br></pre></td></tr></table></figure>
+<p>这使编码更容易，并有助于更快地编写代码。</p>
+<p>请注意，短变量声明形式只能在函数内部使用。您不能在全局范围内使用它。</p>
+<h2 id="内置类型"><a href="#内置类型" class="headerlink" title="内置类型"></a>内置类型</h2><p>以下是 Go 中可用的所有基本&#x2F;内置类型的列表：</p>
+<p>bool - 由两个预定义的常量true和false组成<br>string - 表示字符序列<br>int8 - 有符号 8 位整数（-128 到 127）<br>int16 - 有符号 16 位整数（-32768 到 32767）<br>int32 - 有符号 32 位整数（-2147483648 到 2147483647）<br>int64 - 有符号 64 位整数（-9223372036854775808 到 9223372036854775807）<br>int - 带符号的 32 位或 64 位整数（取决于系统）<br>uint8 - 无符号 8 位整数（0 到 255）<br>uint16 - 无符号 16 位整数（0 到 65535）<br>uint32 - 无符号 32 位整数（0 到 4294967295）<br>uint64 - 无符号 64 位整数（0 到 18446744073709551615）<br>uint - 无符号 32 或 64 位整数（取决于系统）<br>uintptr - 无符号 32 或 64 位整数（取决于系统）<br>字节（uint8 的别名）<br>符文（ int32 的别名）<br>float32 - IEEE-754 32 位浮点数<br>float64 - IEEE-754 64 位浮点数<br>complex64 - 具有 float32 实部和虚部的复数<br>complex128 - 具有 float64 实部和虚部的复数<br>注意：int、uint和uintptr类型在 32 位系统上通常为 32 位宽，在 64 位系统上通常为 64 位宽。当您需要一个整数值时，您应该使用int，除非您有特定的理由使用一个大小调整或无符号整数类型。</p>
+<h2 id="用户定义的类型"><a href="#用户定义的类型" class="headerlink" title="用户定义的类型"></a>用户定义的类型</h2><p>Go 中用户自定义类型主要有两种：</p>
+<p>结构<br>界面<br>结构<br>结构允许程序员将多个相同或不同类型的变量保存在一起。</p>
+<p>在 Go 中，需要使用type和struct关键字来创建结构。创建结构的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type identifier struct &#123;</span><br><span class="line">    structure_members</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由四个相同类型的变量组成的结构示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type Rectangle struct &#123;</span><br><span class="line">    left int</span><br><span class="line">    top int</span><br><span class="line">    right int</span><br><span class="line">    bottom int</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由三个不同类型的变量组成的结构的另一个示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Person struct &#123;</span><br><span class="line">    name string</span><br><span class="line">    age int</span><br><span class="line">    income float32</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结构使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var rect Rectangle</span><br><span class="line"></span><br><span class="line">rect.left = 20</span><br><span class="line">rect.top = 10</span><br><span class="line">rect.right = 50</span><br><span class="line">rect.bottom = 60</span><br><span class="line"></span><br><span class="line">fmt.Println(&quot;left: &quot;, rect.left)</span><br><span class="line">fmt.Println(&quot;top: &quot;, rect.top)</span><br><span class="line">fmt.Println(&quot;right: &quot;, rect.right)</span><br><span class="line">fmt.Println(&quot;bottom: &quot;, rect.bottom)</span><br></pre></td></tr></table></figure>
+<p>Go 允许在变量声明期间初始化结构的成员：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var r = Rectangle&#123;20, 10, 50, 60&#125;</span><br></pre></td></tr></table></figure>
+<p>界面<br>Go 中接口的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type identifier interface &#123;</span><br><span class="line">    interface_methods</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type Person interface &#123;</span><br><span class="line">    Name() string</span><br><span class="line">    Age() int</span><br><span class="line">    Flee()</span><br><span class="line">    Die()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一个使用接口的实际示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type Greeting interface &#123;</span><br><span class="line">    Say()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type EngGreeting struct &#123;</span><br><span class="line">    // Implement the Greeting interface.</span><br><span class="line">    Greeting</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type BanGreeting struct &#123;</span><br><span class="line">    // Implement the Greeting interface.</span><br><span class="line">    Greeting</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e * EngGreeting) Say() &#123;</span><br><span class="line">    // Implement method Say for EngGreeting struct.</span><br><span class="line">    fmt.Println(&quot;Hello Forhad Reja&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e * BanGreeting) Say() &#123;</span><br><span class="line">    // Implement method Say for BanGreeting struct.</span><br><span class="line">    fmt.Println(&quot;ওহে ফরহাদ রেজা&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// This function doesn&#x27;t care whether &#x27;g&#x27; will be a Bengali or English greeting ;)</span><br><span class="line">func say(g Greeting) &#123;</span><br><span class="line">    g.Say()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    // create an instance of EngGreeting.</span><br><span class="line">    e := new(EngGreeting)</span><br><span class="line">    say(e)</span><br><span class="line"></span><br><span class="line">    // create an instance of BanGreeting.</span><br><span class="line">    b := new(BanGreeting)</span><br><span class="line">    say(b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>Go 中的数组创建语法与 C++、C# 等编程语言略有不同。方括号放在元素类型之前：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ array_length_expression ] element_type</span><br></pre></td></tr></table></figure>
+<p>数组长度表达式必须是大于零的整数常量。</p>
+<p>创建单维和多维数组的示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var ar [10]int</span><br><span class="line">var mat [4][4]int</span><br><span class="line">var big [10][10][10]int</span><br></pre></td></tr></table></figure>
+<p>数组可以在创建时初始化：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var ar = [3]int&#123;12, 10, 32&#125;</span><br></pre></td></tr></table></figure>
+<p>让我们看一个为数组的单个元素赋值的例子。请注意，数组的索引从 0 开始，最后一个索引比数组的总长度小一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ar[0] = 5</span><br><span class="line">mat[0][0] = 12</span><br></pre></td></tr></table></figure>
+<p>访问数组的单个元素：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(ar[0], mat[0][0])</span><br></pre></td></tr></table></figure>
+
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>Go 中没有内置的动态数组。但是等等……有切片。</p>
+<p>切片允许我们动态增加数组的大小。在 Go 中可以使用以下语法创建切片：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[  ] element_type</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var da []int = []int&#123;9, 8, 7&#125;</span><br><span class="line"></span><br><span class="line">fmt.Println(da)</span><br></pre></td></tr></table></figure>
+<p>印刷：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[9 8 7]</span><br></pre></td></tr></table></figure>
+<p>Go 具有对切片&#x2F;动态数组执行操作的内置函数。这是使用内置append函数向数组添加新项目的示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">da = append(da, 4)</span><br><span class="line">fmt.Println(da)</span><br></pre></td></tr></table></figure>
+<p>现在它打印：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[9 8 7 4]</span><br></pre></td></tr></table></figure>
+
+<h2 id="常数"><a href="#常数" class="headerlink" title="常数"></a>常数</h2><p>常量是在程序执行期间无法更改的固定值。常量声明以const关键字开头。语法类似于变量声明的语法，只是将var关键字替换为const关键字：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const Pi float64 = 3.14159265358979323846</span><br><span class="line">const zero = 0.0</span><br><span class="line">const (</span><br><span class="line">	size int64 = 1024</span><br><span class="line">	eof        = -1</span><br><span class="line">)</span><br><span class="line">const a, b, c = 3, 4, &quot;foo&quot;</span><br><span class="line">const u, v float32 = 0, 3</span><br></pre></td></tr></table></figure>
+
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>与 C、C++ 一样，Go 支持指针。我们可以创建指针变量来保存另一个变量的地址。并且通过指针变量，我们可以给原来的变量赋值。&amp;运算符用于获取变量的地址，星号*运算符用于取消引用。</p>
+<p>要创建具有显式类型的指针变量，必须将“ * ”符号放在类型名称之前。</p>
+<p>创建具有显式类型的指针变量的示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var p *int</span><br></pre></td></tr></table></figure>
+<p>用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// create a value type variable</span><br><span class="line">var n = 42</span><br><span class="line">// let’s get the address of the variable ‘n’</span><br><span class="line">p = &amp;n</span><br><span class="line">// now, through the pointer variable ‘p’, assign 10 to the variable ‘n’</span><br><span class="line">*p = 10</span><br></pre></td></tr></table></figure>
+
+<p>现在，如果我们打印变量 的值n，我们将得到10。</p>
+<p>我们还可以使用短变量声明形式创建指针：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p := &amp;n</span><br></pre></td></tr></table></figure>
+<p>需要注意的一点是，Go 没有指针算法。这意味着您不能简单地执行类似p++or的操作p +&#x3D; 1。</p>
+<p>所以下面的语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p++</span><br></pre></td></tr></table></figure>
+<p>会产生这个错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">invalid operation: p++ (non-numeric type *int)</span><br></pre></td></tr></table></figure>
+
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>Go中有很多种语句。我们将讨论其中的几个。</p>
+<p>If&#x2F;Else 语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if condition_expression &#123;</span><br><span class="line">	// if body</span><br><span class="line">&#125; else &#123;</span><br><span class="line">	// else body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>if&#x2F;else语句在条件下起作用。如果给定条件表达式的计算结果为真，则执行“ if ”主体的代码，否则，如果存在，则执行“ else ”主体的代码。</p>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if 7%2 == 0 &#123;</span><br><span class="line">    fmt.Println(&quot;7 is even&quot;)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    fmt.Println(&quot;7 is odd&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以使用 ‘ if ‘ 而不使用 ‘ else ‘。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if age == 12 &#123;</span><br><span class="line">    fmt.Println(&quot;too young&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请注意，Go 中的条件不需要括号，而 C++、C#、Java 等编程语言通常需要。而且，Go 中没有三元运算符。即使是基本条件，您也必须使用完整的 if 语句。</p>
+<p>对于声明</p>
+<p>for是 Go 唯一的循环语句。Go中没有这样的 while、do-while、foreach等循环语句。虽然，Go 的 for 语句可以涵盖所有这些。</p>
+<p>以下是for语句的最简单形式，其工作方式与 while 循环语句类似：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i := 0</span><br><span class="line">for i &lt; 10 &#123;</span><br><span class="line">    fmt.Println(i)</span><br><span class="line">    i = i + 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经典的初始&#x2F;条件&#x2F;之后 for 循环：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">    fmt.Println(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是带有范围子句的 for 语句的另一种形式。此表单用于迭代切片或映射：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ar := []int&#123;1, 2, 4, 8, 16, 32, 64, 128&#125;</span><br><span class="line"></span><br><span class="line">for i, v := range ar &#123;</span><br><span class="line">   fmt.Printf(i, v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在切片上进行测距时，每次迭代都会返回两个值。第一个是索引，第二个是该索引处元素的副本。</p>
+<p>切换语句</p>
+<p>Go 的switch语句与 C++ 的 switch 语句非常相似，只是每个 case 主体都会自动中断。不需要显式地放置一个break语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">switch age &#123;</span><br><span class="line">    case 10:</span><br><span class="line">        fmt.Println(&quot;Kid&quot;)</span><br><span class="line">    case 16:</span><br><span class="line">        fmt.Println(&quot;Teen&quot;)</span><br><span class="line">    default:</span><br><span class="line">        fmt.Printf(&quot;Why are you?&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然，可以使用 fallthrough 语句将一个案例转移到下一个案例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">switch age &#123;</span><br><span class="line">    case 8:</span><br><span class="line">        fallthrough</span><br><span class="line">    case 10:</span><br><span class="line">        fmt.Println(&quot;Kid&quot;)</span><br><span class="line">    case 16:</span><br><span class="line">        fmt.Println(&quot;Teen&quot;)</span><br><span class="line">    default:</span><br><span class="line">        fmt.Println(&quot;Why are you?&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>延迟声明</p>
+<p>defer语句用于调用不会立即执行的函数。而是将执行推迟到周围函数返回的那一刻。defer 语句通常用于简化执行各种清理操作的函数。</p>
+<p>让我们看一个 defer 语句如何工作的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    defer fmt.Println(&quot;Hoorraa!… I’m deferred!&quot;)</span><br><span class="line">    defer fmt.Println(&quot;Yeah… I’m also deferred!&quot;)</span><br><span class="line"></span><br><span class="line">    fmt.Printf(&quot;Stop deferring!&quot;)</span><br><span class="line">    return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Stop deferring!</span><br><span class="line">Yeah… I’m also deferred!</span><br><span class="line">Hoorraa!… I’m deferred!</span><br></pre></td></tr></table></figure>
+<p>现在我们可以看到执行顺序完全颠倒了。这就是 defer 语句的实际工作方式。最后一个延迟函数调用在周围函数返回时首先执行。</p>
+<p>另一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    for i := 0; i &lt;= 3; i++ &#123;</span><br><span class="line">        defer fmt.Print(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>印刷：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3 2 1 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>Go 语言支持匿名函数。当我们想要创建没有名称的函数时，匿名函数很有用！它们通常被称为 lambda 函数或简称为lambda。</p>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    func() &#123;</span><br><span class="line">        fmt.Println(&quot;Hello, World!&quot;)</span><br><span class="line">    &#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>示例 2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// put a function into variable ‘greeting’</span><br><span class="line">greeting := func() &#123;</span><br><span class="line">    fmt.Println(&quot;Hello, World!&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// let’s invoke the function</span><br><span class="line">greeting()</span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>Go 的匿名函数可以形成闭包。闭包是一个函数值，它从其主体外部引用变量。该函数可以访问并分配给引用的变量；从这个意义上说，函数与变量“绑定”。</p>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func adder() func(int) int &#123;</span><br><span class="line">	num := 0</span><br><span class="line">	return func(x int) int &#123;</span><br><span class="line">		num += x</span><br><span class="line">		return num</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    pos, neg := adder(), adder()</span><br><span class="line">    for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">        fmt.Println(pos(i), neg(-i))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>Go 没有课程。但是，我们可以在结构类型上定义方法。方法基本上是具有特殊接收器参数的函数。接收器参数出现在其自己的参数列表中，位于func关键字和方法名称之间。</p>
+<p>在下面的示例中，我们将为结构实现两个名为width和height的方法Rectangle：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type Rectangle struct &#123;</span><br><span class="line">    left int</span><br><span class="line">    top int</span><br><span class="line">    right int</span><br><span class="line">    bottom int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (r *Rectangle) width() int &#123;</span><br><span class="line">	return r.right - r.left</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (r Rectangle) height() int &#123;</span><br><span class="line">	return r.bottom - r.top</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    r := Rectangle&#123;20, 10, 50, 50&#125;</span><br><span class="line">    fmt.Println(&quot;width: &quot;, r.width())</span><br><span class="line">    fmt.Println(&quot;height: &quot;, r.height())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>印刷：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">width: 30</span><br><span class="line">height: 40</span><br></pre></td></tr></table></figure>
+<p>我们可以使用值类型或指针类型作为接收器参数。Go 自动处理方法调用的值和指针之间的转换。不过，您可能希望使用指针接收器类型来避免复制方法调用或允许该方法修改接收结构的数据。</p>
+<p>参考<br><a target="_blank" rel="noopener" href="https://golang.org/">https://golang.org</a><br><a target="_blank" rel="noopener" href="https://tour.golang.org/">https://tour.golang.org</a><br><a target="_blank" rel="noopener" href="https://gobyexample.com/">https://gobyexample.com</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Microsoft/" rel="tag"><i class="fa fa-tag"></i> 微软</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/560.html" rel="prev" title="C#中的寻路算法">
+      <i class="fa fa-chevron-left"></i> C#中的寻路算法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">分号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">5.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">内置类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%AE%9A%E4%B9%89%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">7.</span> <span class="nav-text">用户定义的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">8.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E7%89%87"><span class="nav-number">9.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E6%95%B0"><span class="nav-number">10.</span> <span class="nav-text">常数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E9%92%88"><span class="nav-number">11.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-number">12.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-number">13.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AD%E5%8C%85"><span class="nav-number">14.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">15.</span> <span class="nav-text">方法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Code8"
+      src="/images/code8.jpg">
+  <p class="site-author-name" itemprop="name">Code8</p>
+  <div class="site-description" itemprop="description">编程创造未来</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="/categories/" title="&#x2F;categories&#x2F;">📖 分类列表</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Android/" title="&#x2F;categories&#x2F;Android&#x2F;">👉 Android</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Linux/" title="&#x2F;categories&#x2F;Linux&#x2F;">👉 Linux</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Java/" title="&#x2F;categories&#x2F;Java&#x2F;">👉 Java</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/CSharp/" title="&#x2F;categories&#x2F;CSharp&#x2F;">👉 C#</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Go/" title="&#x2F;categories&#x2F;Go&#x2F;">👉 Go</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/" title="&#x2F;tags&#x2F;">💬 标签列表</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Ubuntu/" title="&#x2F;tags&#x2F;Ubuntu&#x2F;">✍ Ubuntu</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Nodejs/" title="&#x2F;tags&#x2F;Nodejs&#x2F;">✍ Nodejs</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Github/" title="&#x2F;tags&#x2F;Github&#x2F;">✍ Github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Hexo/" title="&#x2F;tags&#x2F;Hexo&#x2F;">🔔 Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Microsoft/" title="&#x2F;tags&#x2F;Microsoft&#x2F;">🔔 微软</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Php/" title="&#x2F;tags&#x2F;Php&#x2F;">🔔 Php</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Code8</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
