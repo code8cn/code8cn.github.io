@@ -28,7 +28,7 @@
 <meta property="og:description" content="在本文中，我们将快速概述 Google 的 Go 编程语言。 目录  介绍 Go Hello, World! 注释 分号 功能 入口点 变量 短变量声明 内置类型 用户定义的类型 结构 界面 数组 切片 常数 指针 声明 匿名函数 闭包 方法 参考 历史  介绍Go 是一种由 Google 创建的通用编程语言。这是一个开源项目，旨在提高程序员的工作效率。Go 非常有表现力和干净。它的并发编程能力帮">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-01T09:59:07.000Z">
-<meta property="article:modified_time" content="2022-08-01T13:15:26.034Z">
+<meta property="article:modified_time" content="2022-08-01T13:21:59.127Z">
 <meta property="article:author" content="Code8">
 <meta property="article:tag" content="微软">
 <meta name="twitter:card" content="summary">
@@ -208,7 +208,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-08-01 17:59:07 / 修改时间：21:15:26" itemprop="dateCreated datePublished" datetime="2022-08-01T17:59:07+08:00">2022-08-01</time>
+              <time title="创建时间：2022-08-01 17:59:07 / 修改时间：21:21:59" itemprop="dateCreated datePublished" datetime="2022-08-01T17:59:07+08:00">2022-08-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -373,7 +373,7 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[  ] element_type</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> da []<span class="type">int</span> = []<span class="type">int</span>&#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>&#125;</span><br><span class="line"></span><br><span class="line">fmt.Println(da)</span><br></pre></td></tr></table></figure>
-<p>印刷：</p>
+<p>打印输出：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[<span class="number">9</span> <span class="number">8</span> <span class="number">7</span>]</span><br></pre></td></tr></table></figure>
 <p>Go 具有对切片&#x2F;动态数组执行操作的内置函数。这是使用内置append函数向数组添加新项目的示例：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line">da = <span class="built_in">append</span>(da, <span class="number">4</span>)</span><br><span class="line">fmt.Println(da)</span><br></pre></td></tr></table></figure>
@@ -431,7 +431,7 @@
 <p>现在我们可以看到执行顺序完全颠倒了。这就是 defer 语句的实际工作方式。最后一个延迟函数调用在周围函数返回时首先执行。</p>
 <p>另一个例子：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">defer</span> fmt.Print(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>印刷：</p>
+<p>打印输出：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>Go 语言支持匿名函数。当我们想要创建没有名称的函数时，匿名函数很有用！它们通常被称为 lambda 函数或简称为lambda。</p>
@@ -448,7 +448,7 @@
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>Go 没有课程。但是，我们可以在结构类型上定义方法。方法基本上是具有特殊接收器参数的函数。接收器参数出现在其自己的参数列表中，位于func关键字和方法名称之间。</p>
 <p>在下面的示例中，我们将为结构实现两个名为width和height的方法Rectangle：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Rectangle <span class="keyword">struct</span> &#123;</span><br><span class="line">    left <span class="type">int</span></span><br><span class="line">    top <span class="type">int</span></span><br><span class="line">    right <span class="type">int</span></span><br><span class="line">    bottom <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r *Rectangle)</span></span> width() <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> r.right - r.left</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r Rectangle)</span></span> height() <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> r.bottom - r.top</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    r := Rectangle&#123;<span class="number">20</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>&#125;</span><br><span class="line">    fmt.Println(<span class="string">&quot;width: &quot;</span>, r.width())</span><br><span class="line">    fmt.Println(<span class="string">&quot;height: &quot;</span>, r.height())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>印刷：</p>
+<p>打印输出：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line">width: <span class="number">30</span></span><br><span class="line">height: <span class="number">40</span></span><br></pre></td></tr></table></figure>
 <p>我们可以使用值类型或指针类型作为接收器参数。Go 自动处理方法调用的值和指针之间的转换。不过，您可能希望使用指针接收器类型来避免复制方法调用或允许该方法修改接收结构的数据。</p>
 <p>参考<br><a target="_blank" rel="noopener" href="https://golang.org/">https://golang.org</a><br><a target="_blank" rel="noopener" href="https://tour.golang.org/">https://tour.golang.org</a><br><a target="_blank" rel="noopener" href="https://gobyexample.com/">https://gobyexample.com</a></p>
