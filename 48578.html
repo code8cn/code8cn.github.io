@@ -28,7 +28,7 @@
 <meta property="og:description" content="在本文中，我们将快速概述 Google 的 Go 编程语言。 目录  介绍 Go Hello, World! 注释 分号 功能 入口点 变量 短变量声明 内置类型 用户定义的类型 结构 界面 数组 切片 常数 指针 声明 匿名函数 闭包 方法 参考 历史  介绍Go 是一种由 Google 创建的通用编程语言。这是一个开源项目，旨在提高程序员的工作效率。Go 非常有表现力和干净。它的并发编程能力帮">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-01T09:59:07.000Z">
-<meta property="article:modified_time" content="2022-08-01T11:28:42.426Z">
+<meta property="article:modified_time" content="2022-08-01T11:37:28.002Z">
 <meta property="article:author" content="Code8">
 <meta property="article:tag" content="微软">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-08-01 17:59:07 / 修改时间：19:28:42" itemprop="dateCreated datePublished" datetime="2022-08-01T17:59:07+08:00">2022-08-01</time>
+              <time title="创建时间：2022-08-01 17:59:07 / 修改时间：19:37:28" itemprop="dateCreated datePublished" datetime="2022-08-01T17:59:07+08:00">2022-08-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,14 +257,14 @@
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Go 是一种由 Google 创建的通用编程语言。这是一个开源项目，旨在提高程序员的工作效率。Go 非常有表现力和干净。它的并发编程能力帮助程序员编写需要充分利用多核和联网机器的程序。Go 是静态类型和编译的编程语言。Go 将程序快速编译成机器代码。它还具有垃圾收集功能。垃圾收集使并发代码更容易编写。除此之外，Go 还有一个非常丰富的标准库。</p>
 <span id="more"></span>
 <p>Go Hello, World!<br>让我们看看下面的“你好，世界！” 用 Go 编写的程序：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line">func <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    fmt.<span class="title class_">Println</span>(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>从这个 hello world 程序中，我们得到了以下内容：</p>
 <ol>
 <li>一个名为main的包名。但实际上它是什么？</li>
 </ol>
 <p>好吧，每个 Go 程序都是由包组成的。我们要么编写一个库，要么编写一个可执行程序。可执行程序属于包main。这意味着可执行程序开始在包main中运行。所以在一个 Go 程序的开头，需要通过以下方式指定包名：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br></pre></td></tr></table></figure>
 
 <p>这将告诉编译器这个程序是一个可执行程序。不是图书馆。</p>
 <p>但是如果我们写了一个库，这意味着我们正在写一个新的包，我们给这个包起个名字。假设我们的新库&#x2F;包名称将是‘simplelib’. 如果是这样，那么在我们新库&#x2F;包的每个源文件的开头，必须存在以下行：</p>
