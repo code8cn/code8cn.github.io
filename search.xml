@@ -559,4 +559,13 @@
         <tag>微软</tag>
       </tags>
   </entry>
+  <entry>
+    <title>p20220805</title>
+    <url>/176.html</url>
+    <content><![CDATA[<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">alert</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">C1</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fun f1()</span><br><span class="line"> a();</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
 </search>
