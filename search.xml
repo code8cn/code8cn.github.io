@@ -531,24 +531,30 @@
 <p>另一个例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    for i := 0; i &lt;= 3; i++ &#123;</span><br><span class="line">        defer fmt.Print(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>印刷：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">3 2 1 0</span><br></pre></td></tr></table></figure>
-
-<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>Go 语言支持匿名函数。当我们想要创建没有名称的函数时，匿名函数很有用！它们通常被称为 lambda 函数或简称为lambda。</p>
-<p>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    func() &#123;</span><br><span class="line">        fmt.Println(&quot;Hello, World!&quot;)</span><br><span class="line">    &#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>示例 2：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// put a function into variable ‘greeting’</span><br><span class="line">greeting := func() &#123;</span><br><span class="line">    fmt.Println(&quot;Hello, World!&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// let’s invoke the function</span><br><span class="line">greeting()</span><br></pre></td></tr></table></figure>
-
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>Go 的匿名函数可以形成闭包。闭包是一个函数值，它从其主体外部引用变量。该函数可以访问并分配给引用的变量；从这个意义上说，函数与变量“绑定”。</p>
-<p>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func adder() func(int) int &#123;</span><br><span class="line">	num := 0</span><br><span class="line">	return func(x int) int &#123;</span><br><span class="line">		num += x</span><br><span class="line">		return num</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    pos, neg := adder(), adder()</span><br><span class="line">    for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">        fmt.Println(pos(i), neg(-i))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>Go 没有课程。但是，我们可以在结构类型上定义方法。方法基本上是具有特殊接收器参数的函数。接收器参数出现在其自己的参数列表中，位于func关键字和方法名称之间。</p>
-<p>在下面的示例中，我们将为结构实现两个名为width和height的方法Rectangle：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type Rectangle struct &#123;</span><br><span class="line">    left int</span><br><span class="line">    top int</span><br><span class="line">    right int</span><br><span class="line">    bottom int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (r *Rectangle) width() int &#123;</span><br><span class="line">	return r.right - r.left</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (r Rectangle) height() int &#123;</span><br><span class="line">	return r.bottom - r.top</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    r := Rectangle&#123;20, 10, 50, 50&#125;</span><br><span class="line">    fmt.Println(&quot;width: &quot;, r.width())</span><br><span class="line">    fmt.Println(&quot;height: &quot;, r.height())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>印刷：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">width: 30</span><br><span class="line">height: 40</span><br></pre></td></tr></table></figure>
-<p>我们可以使用值类型或指针类型作为接收器参数。Go 自动处理方法调用的值和指针之间的转换。不过，您可能希望使用指针接收器类型来避免复制方法调用或允许该方法修改接收结构的数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>3 2 1 0</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">匿名函数</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Go 语言支持匿名函数。当我们想要创建没有名称的函数时，匿名函数很有用！它们通常被称为 lambda 函数或简称为lambda。</span><br><span class="line"></span><br><span class="line">例子：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>package main</p>
+<p>import “fmt”</p>
+<p>func main() {<br>    func() {<br>        fmt.Println(“Hello, World!”)<br>    }()<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例 2：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&#x2F;&#x2F; put a function into variable ‘greeting’<br>greeting :&#x3D; func() {<br>    fmt.Println(“Hello, World!”)<br>}</p>
+<p>&#x2F;&#x2F; let’s invoke the function<br>greeting()</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">闭包</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Go 的匿名函数可以形成闭包。闭包是一个函数值，它从其主体外部引用变量。该函数可以访问并分配给引用的变量；从这个意义上说，函数与变量“绑定”。</span><br><span class="line"></span><br><span class="line">例子：</span><br></pre></td></tr></table></figure>
+<p>package main</p>
+<p>import “fmt”</p>
+<p>func adder() func(int) int {<br>    num :&#x3D; 0<br>    return func(x int) int {<br>        num +&#x3D; x<br>        return num<br>    }<br>}</p>
+<p>func main() {<br>    pos, neg :&#x3D; adder(), adder()<br>    for i :&#x3D; 0; i &lt; 10; i++ {<br>        fmt.Println(pos(i), neg(-i))<br>    }<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">方法</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Go 没有课程。但是，我们可以在结构类型上定义方法。方法基本上是具有特殊接收器参数的函数。接收器参数出现在其自己的参数列表中，位于func关键字和方法名称之间。</span><br><span class="line"></span><br><span class="line">在下面的示例中，我们将为结构实现两个名为width和height的方法Rectangle：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>package main</p>
+<p>import “fmt”</p>
+<p>type Rectangle struct {<br>    left int<br>    top int<br>    right int<br>    bottom int<br>}</p>
+<p>func (r *Rectangle) width() int {<br>    return r.right - r.left<br>}</p>
+<p>func (r Rectangle) height() int {<br>    return r.bottom - r.top<br>}</p>
+<p>func main() {<br>    r :&#x3D; Rectangle{20, 10, 50, 50}<br>    fmt.Println(“width: “, r.width())<br>    fmt.Println(“height: “, r.height())<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">印刷：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>width: 30<br>height: 40</p>
+<p>&#96;&#96;&#96;<br>我们可以使用值类型或指针类型作为接收器参数。Go 自动处理方法调用的值和指针之间的转换。不过，您可能希望使用指针接收器类型来避免复制方法调用或允许该方法修改接收结构的数据。</p>
 <p>参考<br><a href="https://golang.org/">https://golang.org</a><br><a href="https://tour.golang.org/">https://tour.golang.org</a><br><a href="https://gobyexample.com/">https://gobyexample.com</a></p>
 ]]></content>
       <categories>
