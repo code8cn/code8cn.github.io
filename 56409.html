@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/code8cn.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/code8cn.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":"ture","async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="安装及初看U++平台本文提供有关 U++ 环境的基本信息以及在您的计算机上安装它所需的步骤。目录  我为什么要在乎？ 在哪里下载 Linux、FreeBSD 和 OpenSolaris 安装 OpenBSD 特定说明 视窗 苹果系统 选择主包对话框 尝试第一个示例 将 TheIDE 安装到 Linux 桌面菜单中 如何启动新项目 UppHub 接下来是什么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="U++ 2022.2 入门">
+<meta property="og:url" content="http://example.com/56409.html">
+<meta property="og:site_name" content="代码吧">
+<meta property="og:description" content="安装及初看U++平台本文提供有关 U++ 环境的基本信息以及在您的计算机上安装它所需的步骤。目录  我为什么要在乎？ 在哪里下载 Linux、FreeBSD 和 OpenSolaris 安装 OpenBSD 特定说明 视窗 苹果系统 选择主包对话框 尝试第一个示例 将 TheIDE 安装到 Linux 桌面菜单中 如何启动新项目 UppHub 接下来是什么">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/pic/u2022080101.png">
+<meta property="og:image" content="http://example.com/pic/u2022080102.png">
+<meta property="og:image" content="http://example.com/pic/u2022080103.png">
+<meta property="og:image" content="http://example.com/pic/u2022080104.png">
+<meta property="og:image" content="http://example.com/pic/u2022080105.png">
+<meta property="og:image" content="http://example.com/pic/u2022080106.png">
+<meta property="og:image" content="http://example.com/pic/u2022080107.png">
+<meta property="og:image" content="http://example.com/pic/u2022080108.png">
+<meta property="og:image" content="http://example.com/pic/u2022080109.png">
+<meta property="og:image" content="http://example.com/pic/u2022080110.png">
+<meta property="og:image" content="http://example.com/pic/u2022080111.png">
+<meta property="og:image" content="http://example.com/pic/u2022080112.png">
+<meta property="og:image" content="http://example.com/pic/u2022080113.png">
+<meta property="og:image" content="http://example.com/pic/u2022080114.png">
+<meta property="og:image" content="http://example.com/pic/u2022080115.png">
+<meta property="og:image" content="http://example.com/pic/u2022080116.png">
+<meta property="og:image" content="http://example.com/pic/u2022080117.png">
+<meta property="og:image" content="http://example.com/pic/u2022080118.png">
+<meta property="article:published_time" content="2022-08-01T14:12:06.000Z">
+<meta property="article:modified_time" content="2022-08-01T14:48:42.444Z">
+<meta property="article:author" content="Code8">
+<meta property="article:tag" content="U++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/pic/u2022080101.png">
+
+<link rel="canonical" href="http://example.com/56409.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>U++ 2022.2 入门 | 代码吧</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">代码吧</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">代码改变世界</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://www.quora8.cn/" class="github-corner" title="有问题，就有答案" aria-label="有问题，就有答案" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/56409.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/code8.jpg">
+      <meta itemprop="name" content="Code8">
+      <meta itemprop="description" content="编程创造未来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="代码吧">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          U++ 2022.2 入门
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-08-01 22:12:06 / 修改时间：22:48:42" itemprop="dateCreated datePublished" datetime="2022-08-01T22:12:06+08:00">2022-08-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cpp/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>安装及初看U++平台<br>本文提供有关 U++ 环境的基本信息以及在您的计算机上安装它所需的步骤。<br>目录</p>
+<ol>
+<li>我为什么要在乎？</li>
+<li>在哪里下载</li>
+<li>Linux、FreeBSD 和 OpenSolaris 安装</li>
+<li>OpenBSD 特定说明</li>
+<li>视窗</li>
+<li>苹果系统</li>
+<li>选择主包对话框</li>
+<li>尝试第一个示例</li>
+<li>将 TheIDE 安装到 Linux 桌面菜单中</li>
+<li>如何启动新项目</li>
+<li>UppHub</li>
+<li>接下来是什么</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="我为什么要在乎？"><a href="#我为什么要在乎？" class="headerlink" title="我为什么要在乎？"></a>我为什么要在乎？</h2><p>U++ 是一个开源 C++ 框架&#x2F;开发环境，目前最适合具有雄心勃勃的项目的小型团队，这些项目可以做“真正的事情”，例如设计建筑物的工程应用程序、风电场模拟、销售点终端、SQL 客户端-服务器办公室议程、业务销售或复杂的网站后端（是的，我在这里列出了真实世界的示例）。然而，它也可以从最小的实用程序中很好地扩展，正如可以在此处看到的那样。</p>
+<p>它是围绕一些相当极端的原则设计的，以最大限度地提高开发人员的生产力和性能。</p>
+<p>虽然 C++ 语言的复杂性无法抽象出来（但绝对是实现生产力和性能目标所必需的），但有经验的 U++ 程序员可能会发现自己在 U++ 中执行任务比使用“易于使用”的脚本语言（如 Python）更有效率，是我们的最终目标。</p>
+<p>同时，U++ 核心库在字符串操作和映射等领域提供的性能比标准 C++ 库高约 3 倍，这些领域在许多场景中都包含大量负载（例如处理 JSON 或解析文件）。</p>
+<p>最重要的是源代码的模块化系统和相应的构建系统，这使得大型项目的管理变得更加简单。</p>
+<p>一个事实总结一下：完全重建 U++ 开发环境(TheIDE) 和调试模式下的所有框架库只需要45 秒。（您实际上可以在安装后立即尝试，因为 TheIDE 源是发行版的一部分）。</p>
+<p>它在一个演示示例中也有一张漂亮的猫图片！</p>
+<p>U++ 目前适用于Windows、X11和MacOS平台。</p>
+<h2 id="在哪里下载"><a href="#在哪里下载" class="headerlink" title="在哪里下载"></a>在哪里下载</h2><p>稳定版本可以在<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/upp/%E6%89%BE%E5%88%B0%E3%80%82">https://sourceforge.net/projects/upp/找到。</a></p>
+<p>U++ 目前作为 LZMA 压缩档案发布（.7z 用于 Windows，.xz 用于 POSIX &#x2F; MacOS）。</p>
+<h2 id="Linux、FreeBSD-和-OpenSolaris-安装"><a href="#Linux、FreeBSD-和-OpenSolaris-安装" class="headerlink" title="Linux、FreeBSD 和 OpenSolaris 安装"></a>Linux、FreeBSD 和 OpenSolaris 安装</h2><p>在 Linux 中，必须为目标发行版编译 U++，同时满足依赖关系。然而，对于大多数流行的 Linux 风格来说，这个过程是快速的并且大部分是自动化的。解压存档后，cd到upp文件夹并运行.&#x2F;install脚本：<br><img src="/pic/u2022080101.png" alt="img"><br>该脚本应该能够检测您的 Linux 发行版并建议安装所需依赖项的命令。如果您不介意共享 sudo 密码，它甚至可以安装这些，或者您可以将命令复制到单独的终端并自己运行。.&#x2F;install对于 FreeBSD 和 OpenSolaris 派生系统，相同的过程也应该可以正常工作。</p>
+<p>之后，将从源代码编译开发环境，这在现代 x86 CPU 上需要几分钟（在 Raspberry PI 4 上大约需要 15 分钟）：<br><img src="/pic/u2022080102.png" alt="img"><br>之后，.&#x2F;theide生成二进制文件，可以立即使用脚本启动它，您应该会看到如下内容：<br><img src="/pic/u2022080103.png" alt="img"><br>注意：除非您将ide 二进制文件移到其他地方，否则它不会在upp目录之外写入任何内容。一旦你对 U++ 感到厌烦，就删除upp。</p>
+<p>此后，在所有平台上使用 TheIDE 基本相同。</p>
+<h2 id="OpenBSD-特定说明"><a href="#OpenBSD-特定说明" class="headerlink" title="OpenBSD 特定说明"></a>OpenBSD 特定说明</h2><p>在 OpenBSD 中，您需要在运行.&#x2F;install脚本之前手动解决依赖关系，方法是运行：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">pkg_add bash pkgconfig</span><br></pre></td></tr></table></figure>
+<p>（只要您在安装 U++ 之前安装了桌面环境，这应该可以工作。）</p>
+<p>还需要将&#x2F;etc&#x2F;login.conf中允许的内存大小增加到：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">default</span>:\</span><br><span class="line">    :datasize-max=<span class="number">4096</span>M:\</span><br><span class="line">    :datasize-cur=<span class="number">4096</span>M:\</span><br><span class="line">    :stacksize-cur=<span class="number">512</span>M:\</span><br></pre></td></tr></table></figure>
+<p>否则编译器将耗尽内存。之后，按照 Linux 的说明进行操作。</p>
+<h2 id="视窗"><a href="#视窗" class="headerlink" title="视窗"></a>视窗</h2><p>在 Windows 中，TheIDE 是预编译的，U++ 带有所有需要的依赖项，包括 clang 编译器。只需解压缩存档并启动theide.exe 即可。<br><img src="/pic/u2022080104.png" alt="img"><br>再一次，U++ 是自包含的，不会在upp目录之外写入任何内容。启动theide.exe后，您应该会看到与 Linux 基本相同的对话框：<br><img src="/pic/u2022080105.png" alt="img"></p>
+<h2 id="苹果系统"><a href="#苹果系统" class="headerlink" title="苹果系统"></a>苹果系统</h2><p>在 MacOS 中，TheIDE 在存档中预编译，但是 U++ 需要 C++ 工具链来构建应用程序。您可以在此处找到有关如何安装工具链的说明，例如。</p>
+<p>可以使用homebrew安装其他一些工具和库。建议使用以下软件包（因为在某些情况下可能需要它们）：openssl, libssh2.</p>
+<p>要启动 TheIDE，您只需从解压缩的存档中启动theide.app：<br><img src="/pic/u2022080106.png" alt="img"><br>您现在应该看到与其他平台上基本相同的对话框：<br><img src="/pic/u2022080107.png" alt="img"></p>
+<h2 id="选择主包对话框"><a href="#选择主包对话框" class="headerlink" title="选择主包对话框"></a>选择主包对话框</h2><p>无需赘述，我们现在将描述您在对话框中看到的内容。</p>
+<p>程序集基本上是用于查找源代码模块的目录列表。此类模块的术语是package。包基本上是一个目录，其中包含 C++ 源文件和一些描述如何编译包和对其他包的依赖关系的元信息。</p>
+<p>您在对话框中看到的程序集列表是可编辑的，但在您第一次启动 TheIDE 后，它会根据发行版附带的源创建一组预定义的程序集。在这里，examples主要包含更复杂的演示示例来“展示 U++ 的力量”（以及一些猫图片），同时reference包含近 200 个演示 U++ 框架各个方面的示例。tutorial是 U++ 网站上的几个多步骤教程附带的示例。uppsrc是包含基本 U++ 库和实用程序以及 TheIDE 本身的源代码的程序集。MyApps是为您使用 U++ 进行初始实验而准备的程序集。</p>
+<p>除了“规范”模块外，U++ 版本还带有大量社区贡献的内容，称为bazaar. 目前，集市代码的质量和实用性差异很大，因此请谨慎使用。是这些包的演示示例，而您的项目是否已准备好包含包的程序集。 examples-bazaarMyApps-bazaarbazaar</p>
+<h2 id="尝试第一个示例"><a href="#尝试第一个示例" class="headerlink" title="尝试第一个示例"></a>尝试第一个示例</h2><p>现在让我们加载、编译和运行其中一个示例。选择examples并在包列表中选择Days（当然，您可以选择任何其他示例，但Days以下屏幕截图所示）。TheIDE 将加载项目，您应该会看到：<br><img src="/pic/u2022080108.png" alt="img"><br>在左上角，有一个包列表。Days是您选择的包（它是主包），列出的其他包是它的直接或间接依赖项。在该列表区域下是当前选定包的文件列表。请注意，这意味着 U++ 项目的所有源文件，包括 U++ 框架的所有源文件，通常只需单击 2 次鼠标即可（实际上您必须小心不要通过编辑它们来损坏框架文件）。</p>
+<p>窗口的中心显然包含当前文件的源代码。右边是一个叫做“导航器”的东西——这是一个基于C++源代码分析整个项目的搜索工具。</p>
+<p>要编译并运行项目，请按Ctrl+F5或在Debug菜单中选择“ Execute ” 。<br><img src="/pic/u2022080109.png" alt="img"><br>整个项目现在将编译并启动应用程序。<br><img src="/pic/u2022080110.png" alt="img"><br>注意：第一次这样做时，对于给定的配置，U++ 将需要编译整个框架，因此预计最多需要一分钟才能完成。仅对主包进行更改后的下一次编译应该会快得多。</p>
+<h2 id="将-TheIDE-安装到-Linux-桌面菜单中"><a href="#将-TheIDE-安装到-Linux-桌面菜单中" class="headerlink" title="将 TheIDE 安装到 Linux 桌面菜单中"></a>将 TheIDE 安装到 Linux 桌面菜单中</h2><p>本部分仅适用于 Linux。现在运行 TheIDE，现在是通过调用此菜单项将其安装到桌面菜单的好时机：<br><img src="/pic/u2022080111.png" alt="img"><br>这将创建 ~&#x2F; .local&#x2F;share&#x2F;applications&#x2F;theide.desktop文件，该文件应将 TheIDE 带入Linux 桌面的Programming子菜单。</p>
+<h2 id="如何启动新项目"><a href="#如何启动新项目" class="headerlink" title="如何启动新项目"></a>如何启动新项目</h2><p>要开始编写自己的代码，您应该选择MyApps程序集，它被重新配置为将您新创建的包放入MyApps目录。<br><img src="/pic/u2022080112.png" alt="img"><br>现在按下“新建包”按钮，您将进入“创建新包”小向导。<br><img src="/pic/u2022080113.png" alt="img"><br>对于这个测试，我们将选择U++ Basic CtrlLib 应用程序，这基本上意味着没有主窗口类的预生成代码的 GUI 应用程序。所以它只是向我们的主包添加了正确的依赖项，并提供了非常少的样板代码。为了结束讲座，我们现在要做的就是插入：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">PromptOK</span>(<span class="string">&quot;Hello world!&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>进入GUI_APP_MAIN区块：<br><img src="/pic/u2022080114.png" alt="img"><br>Execute并像Days示例一样调用“ ”：<br><img src="/pic/u2022080115.png" alt="img"><br>恭喜，您刚刚编译了您的第一个 U++ 应用程序！</p>
+<h2 id="UppHub"><a href="#UppHub" class="headerlink" title="UppHub"></a>UppHub</h2><p>U++ 2021.1 的新特性是UppHub，该系统允许将 3rd 方模块（库）与 U++ 项目轻松集成。这类似于包管理系统，如 PyPI（用于 Python）、NuGet（用于 C#）或 vcpkg（用于 C&#x2F;C++）。由于现有的 U++ 模块化系统，在 TheIDE 中的集成非常无缝。</p>
+<p>通过包选择对话框中的按钮访问 UppHub 对话框<br><img src="/pic/u2022080116.png" alt="img"><br>或通过菜单项 Setup &#x2F; UppHub..<br><img src="/pic/u2022080117.png" alt="img"><br>安装按钮将源存储库克隆到对 U++ 包系统可见的位置，从而可以立即在项目中使用已安装的包。在此处查看完整的 UppHub 文档。</p>
+<h2 id="接下来是什么"><a href="#接下来是什么" class="headerlink" title="接下来是什么"></a>接下来是什么</h2><p>如果您一直关注到这里，那么您可能会对 U++ 稍微感兴趣并想知道下一步该做什么。好吧，更熟悉 U++ 的推荐路径是检查并尝试参考示例：<br><img src="/pic/u2022080118.png" alt="img"></p>
+<p>这些是小代码片段，展示了 U++ 框架的大多数方面，因为它们打算被使用。只需浏览列表，加载您感兴趣的内容并运行它。当然，还有一个包含文档、教程和论坛的网站，人们渴望用 U++ 解决您的所有问题。</p>
+<h2 id="有用的链接"><a href="#有用的链接" class="headerlink" title="有用的链接"></a>有用的链接</h2><p>U++主页<br><a target="_blank" rel="noopener" href="http://www.ultimatepp.org/">http://www.ultimatepp.org/</a><br>U++下载页面<br><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/upp/files/upp/2022.2/">https://sourceforge.net/projects/upp/files/upp/2022.2/</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Upp/" rel="tag"><i class="fa fa-tag"></i> U++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/176.html" rel="prev" title="p20220805">
+      <i class="fa fa-chevron-left"></i> p20220805
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%9C%A8%E4%B9%8E%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">我为什么要在乎？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%93%AA%E9%87%8C%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.</span> <span class="nav-text">在哪里下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E3%80%81FreeBSD-%E5%92%8C-OpenSolaris-%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">Linux、FreeBSD 和 OpenSolaris 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenBSD-%E7%89%B9%E5%AE%9A%E8%AF%B4%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">OpenBSD 特定说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E7%AA%97"><span class="nav-number">5.</span> <span class="nav-text">视窗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8B%B9%E6%9E%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">6.</span> <span class="nav-text">苹果系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E4%B8%BB%E5%8C%85%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">7.</span> <span class="nav-text">选择主包对话框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A4%BA%E4%BE%8B"><span class="nav-number">8.</span> <span class="nav-text">尝试第一个示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86-TheIDE-%E5%AE%89%E8%A3%85%E5%88%B0-Linux-%E6%A1%8C%E9%9D%A2%E8%8F%9C%E5%8D%95%E4%B8%AD"><span class="nav-number">9.</span> <span class="nav-text">将 TheIDE 安装到 Linux 桌面菜单中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8%E6%96%B0%E9%A1%B9%E7%9B%AE"><span class="nav-number">10.</span> <span class="nav-text">如何启动新项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UppHub"><span class="nav-number">11.</span> <span class="nav-text">UppHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">12.</span> <span class="nav-text">接下来是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%94%A8%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="nav-number">13.</span> <span class="nav-text">有用的链接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Code8"
+      src="/images/code8.jpg">
+  <p class="site-author-name" itemprop="name">Code8</p>
+  <div class="site-description" itemprop="description">编程创造未来</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="/categories/" title="&#x2F;categories&#x2F;">📖 分类列表</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Android/" title="&#x2F;categories&#x2F;Android&#x2F;">👉 Android</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Linux/" title="&#x2F;categories&#x2F;Linux&#x2F;">👉 Linux</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Java/" title="&#x2F;categories&#x2F;Java&#x2F;">👉 Java</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/CSharp/" title="&#x2F;categories&#x2F;CSharp&#x2F;">👉 C#</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/categories/Go/" title="&#x2F;categories&#x2F;Go&#x2F;">👉 Go</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/" title="&#x2F;tags&#x2F;">💬 标签列表</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Ubuntu/" title="&#x2F;tags&#x2F;Ubuntu&#x2F;">✍ Ubuntu</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Nodejs/" title="&#x2F;tags&#x2F;Nodejs&#x2F;">✍ Nodejs</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Github/" title="&#x2F;tags&#x2F;Github&#x2F;">✍ Github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Hexo/" title="&#x2F;tags&#x2F;Hexo&#x2F;">🔔 Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Microsoft/" title="&#x2F;tags&#x2F;Microsoft&#x2F;">🔔 微软</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="/tags/Php/" title="&#x2F;tags&#x2F;Php&#x2F;">🔔 Php</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Code8</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
