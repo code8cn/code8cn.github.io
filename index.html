@@ -1,1212 +1,262 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/code8cn.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/code8cn.ico">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"code.quora8.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":"ture","async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="编程创造未来">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>代码吧 - 代码改变世界</title><meta name="author" content="Code8"><meta name="copyright" content="Code8"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="编程创造未来">
 <meta property="og:type" content="website">
 <meta property="og:title" content="代码吧">
 <meta property="og:url" content="https://code.quora8.cn/index.html">
 <meta property="og:site_name" content="代码吧">
 <meta property="og:description" content="编程创造未来">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://code.quora8.cn/img/code8.jpg">
 <meta property="article:author" content="Code8">
 <meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="https://code.quora8.cn/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>代码吧</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+<meta name="twitter:image" content="https://code.quora8.cn/img/code8.jpg"><link rel="shortcut icon" href="/img/code8cn.ico"><link rel="canonical" href="https://code.quora8.cn/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '代码吧',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-08-02 14:42:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">代码吧</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">代码改变世界</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
-    </header>
-
-    
-  <div class="reading-progress-bar"></div>
-
-  <a href="https://www.quora8.cn/" class="github-corner" title="有问题，就有答案" aria-label="有问题，就有答案" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://code.quora8.cn/56409.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8.jpg">
-      <meta itemprop="name" content="Code8">
-      <meta itemprop="description" content="编程创造未来">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/56409.html" class="post-title-link" itemprop="url">U++ 2022.2 入门</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-08-01 22:12:06 / 修改时间：22:48:42" itemprop="dateCreated datePublished" datetime="2022-08-01T22:12:06+08:00">2022-08-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cpp/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>安装及初看U++平台<br>本文提供有关 U++ 环境的基本信息以及在您的计算机上安装它所需的步骤。<br>目录</p>
-<ol>
-<li>我为什么要在乎？</li>
-<li>在哪里下载</li>
-<li>Linux、FreeBSD 和 OpenSolaris 安装</li>
-<li>OpenBSD 特定说明</li>
-<li>视窗</li>
-<li>苹果系统</li>
-<li>选择主包对话框</li>
-<li>尝试第一个示例</li>
-<li>将 TheIDE 安装到 Linux 桌面菜单中</li>
-<li>如何启动新项目</li>
-<li>UppHub</li>
-<li>接下来是什么</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/56409.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://code.quora8.cn/176.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8.jpg">
-      <meta itemprop="name" content="Code8">
-      <meta itemprop="description" content="编程创造未来">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/176.html" class="post-title-link" itemprop="url">p20220805</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-08-01 20:34:45 / 修改时间：20:36:34" itemprop="dateCreated datePublished" datetime="2022-08-01T20:34:45+08:00">2022-08-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">alert</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">C1</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fun f1()</span><br><span class="line"> a();</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://code.quora8.cn/48578.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8.jpg">
-      <meta itemprop="name" content="Code8">
-      <meta itemprop="description" content="编程创造未来">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/48578.html" class="post-title-link" itemprop="url">Go语言 快速概览</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-08-01 17:59:07 / 修改时间：21:21:59" itemprop="dateCreated datePublished" datetime="2022-08-01T17:59:07+08:00">2022-08-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在本文中，我们将快速概述 Google 的 Go 编程语言。</p>
-<p>目录</p>
-<ol>
-<li>介绍</li>
-<li>Go Hello, World!</li>
-<li>注释</li>
-<li>分号</li>
-<li>功能<br> 入口点</li>
-<li>变量<br> 短变量声明</li>
-<li>内置类型</li>
-<li>用户定义的类型<br> 结构<br> 界面</li>
-<li>数组</li>
-<li>切片</li>
-<li>常数</li>
-<li>指针</li>
-<li>声明</li>
-<li>匿名函数<br> 闭包</li>
-<li>方法</li>
-<li>参考</li>
-<li>历史</li>
-</ol>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Go 是一种由 Google 创建的通用编程语言。这是一个开源项目，旨在提高程序员的工作效率。Go 非常有表现力和干净。它的并发编程能力帮助程序员编写需要充分利用多核和联网机器的程序。Go 是静态类型和编译的编程语言。Go 将程序快速编译成机器代码。它还具有垃圾收集功能。垃圾收集使并发代码更容易编写。除此之外，Go 还有一个非常丰富的标准库。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/48578.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://code.quora8.cn/560.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8.jpg">
-      <meta itemprop="name" content="Code8">
-      <meta itemprop="description" content="编程创造未来">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/560.html" class="post-title-link" itemprop="url">C#中的寻路算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-07-31 17:32:39 / 修改时间：21:13:42" itemprop="dateCreated datePublished" datetime="2022-07-31T17:32:39+08:00">2022-07-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSharp/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>下载源 - 571.3 KB<br><a target="_blank" rel="noopener" href="https://www.codeproject.com/KB/Articles/1221034/Source.zip">https://www.codeproject.com/KB/Articles/1221034/Source.zip</a><br>Path finding challenge<br><a target="_blank" rel="noopener" href="http://airobots.azurewebsites.net/">http://airobots.azurewebsites.net/</a></p>
-<p>在 Visual Studio 2017 中解压缩并打开解决方案</p>
-<p>介绍<br>您有没有想过 GPS 应用程序如何计算到达所选目的地的最快方式？正如您将看到的，它实际上非常简单。</p>
-<p>本文对此进行了解释，并提供了您可以随意使用的示例代码。文章还比较了两种常见的基本算法，Dijkstra 和 A*。</p>
-<p>问题<br>假设你有一张地图。你知道你在哪里，你想去哪里。地图有连接节点（有坐标的地方）的道路（它们被称为边）。</p>
-<p>从每个节点，你可以去一个或多个边。一条边有一个成本（例如，通过它所需的长度或时间）。<br>对于小地图，也许可以计算到目的地的所有可能路线并选择最短的路线。但这对于具有许多节点的地图来说不是很实用，因为组合呈指数增长。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/560.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://code.quora8.cn/2736.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8.jpg">
-      <meta itemprop="name" content="Code8">
-      <meta itemprop="description" content="编程创造未来">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2736.html" class="post-title-link" itemprop="url">C#/.NET 中的动态语言运行时</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-07-31 17:08:29" itemprop="dateCreated datePublished" datetime="2022-07-31T17:08:29+08:00">2022-07-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-01 08:52:41" itemprop="dateModified" datetime="2022-08-01T08:52:41+08:00">2022-08-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSharp/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>C# 中的动态语言运行时 DLR 概述<br>本文讨论动态语言运行时如何在 C#、DynamicObject 和 ExpandoObject 中工作，以及 IronPython 在 .NET 中的最简单用法。<br>介绍<br>尽管 C# 属于静态类型语言，但在该语言的最新版本中添加了一些动态功能。在本文中，我想展示动态语言运行时 (DLR)如何在 C# 中工作，DynamicObject以及IronPython在 .NET 中ExpandoObject的最简单用法。</p>
-<p>C# 中的动态语言运行时 DLR<br>DLR（动态语言运行时）自.NET 4.0开始添加，代表IronPython和IronRuby等动态语言的运行时环境。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2736.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://code.quora8.cn/1504.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8.jpg">
-      <meta itemprop="name" content="Code8">
-      <meta itemprop="description" content="编程创造未来">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/1504.html" class="post-title-link" itemprop="url">代码改变世界</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-07-31 15:23:09 / 修改时间：15:30:11" itemprop="dateCreated datePublished" datetime="2022-07-31T15:23:09+08:00">2022-07-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![img](/pic/img20220727.png)</span><br><span class="line">sudo apt-get update</span><br><span class="line">./RNU-ME.sh</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1504.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://code.quora8.cn/22981.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8.jpg">
-      <meta itemprop="name" content="Code8">
-      <meta itemprop="description" content="编程创造未来">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/22981.html" class="post-title-link" itemprop="url">一台电脑配置多个GitHub 或 其他git 仓库账号的方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-07-28 15:35:15" itemprop="dateCreated datePublished" datetime="2022-07-28T15:35:15+08:00">2022-07-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-31 17:10:35" itemprop="dateModified" datetime="2022-07-31T17:10:35+08:00">2022-07-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 取消全局设置</span><br><span class="line">git config --global --unset user.name</span><br><span class="line">git config --global --unset user.email</span><br><span class="line"></span><br><span class="line"># 进入项目目录</span><br><span class="line">git init</span><br><span class="line">git config user.email &quot;xxxxx@xxx.com&quot;</span><br><span class="line">git config user.name &quot;xxxx&quot;</span><br><span class="line"></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://code.quora8.cn/30233.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8.jpg">
-      <meta itemprop="name" content="Code8">
-      <meta itemprop="description" content="编程创造未来">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/30233.html" class="post-title-link" itemprop="url">vercel绑定域名 解析@cname</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-07-28 13:45:43" itemprop="dateCreated datePublished" datetime="2022-07-28T13:45:43+08:00">2022-07-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-31 16:34:39" itemprop="dateModified" datetime="2022-07-31T16:34:39+08:00">2022-07-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>_vercel	TXT	默认	<br>vc-domain-verify&#x3D;code.quora8.cn,xxxx</p>
-<p>code	CNAME	默认	<br>cname.vercel-dns.com</p>
-<p>@  A  默认  76.76.21.21</p>
-<p>www  CNAME  默认	cname.vercel-dns.com</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://code.quora8.cn/33390.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8.jpg">
-      <meta itemprop="name" content="Code8">
-      <meta itemprop="description" content="编程创造未来">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/33390.html" class="post-title-link" itemprop="url">Ubuntu 安装nodejs最新版本简单方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-07-27 18:58:41" itemprop="dateCreated datePublished" datetime="2022-07-27T18:58:41+08:00">2022-07-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-28 13:47:18" itemprop="dateModified" datetime="2022-07-28T13:47:18+08:00">2022-07-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>···<br>sudo apt update -y<br>sudo apt install -y npm<br>sudo npm config set registry <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a><br>sudo npm install n -g<br>sudo n stable<br>···</p>
-<h3 id="ubuntu-上安装node-js-的简单方法"><a href="#ubuntu-上安装node-js-的简单方法" class="headerlink" title="ubuntu 上安装node.js 的简单方法"></a>ubuntu 上安装node.js 的简单方法</h3><p>一、安装<br>1.$ sudo apt-get install nodejs<br>2.$ sudo apt-get install npm</p>
-<p>二、升级<br>    1.升级npm命令如下：</p>
-<p>$ sudo npm install npm -g<br>&#x2F;usr&#x2F;local&#x2F;bin&#x2F;npm -&gt; &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules&#x2F;npm&#x2F;bin&#x2F;npm-cli.js<br><a href="mailto:&#110;&#x70;&#109;&#64;&#x32;&#x2e;&#x31;&#x34;&#46;&#x32;">&#110;&#x70;&#109;&#64;&#x32;&#x2e;&#x31;&#x34;&#46;&#x32;</a> &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules&#x2F;npm<br>2.升级node.js命令如下：<br>$ npm install –g n<br>$ n latest(升级node.js到最新版)  or $ n stable（升级node.js到最新稳定版）<br>    n后面也可以跟随版本号比如：$ n v0.10.26 或者 $ n 0.10.26</p>
-<p>三、npm镜像替换为淘宝镜像</p>
-<p>1.得到原本的镜像地址<br>$ npm get registry </p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://registry.npmjs.org/">https://registry.npmjs.org/</a><br>设成淘宝的<br>$ npm config set registry <a target="_blank" rel="noopener" href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org/</a></p>
-</blockquote>
-<p>2.换成原来的<br>$ npm config set registry <a target="_blank" rel="noopener" href="https://registry.npmjs.org/">https://registry.npmjs.org/</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/33390.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://code.quora8.cn/25333.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/code8.jpg">
-      <meta itemprop="name" content="Code8">
-      <meta itemprop="description" content="编程创造未来">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/25333.html" class="post-title-link" itemprop="url">换电脑把hexo从GitHub上克隆到本地-恢复使用操作</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-07-27 18:37:41 / 修改时间：18:59:39" itemprop="dateCreated datePublished" datetime="2022-07-27T18:37:41+08:00">2022-07-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>先从github上克隆下来：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:code8cn/code8cn.github.io.git</span><br></pre></td></tr></table></figure>
-<p>然后进入目录执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>当然要已经安装好hexo</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/25333.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/code8.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">代码吧</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">代码吧</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/56409.html" title="U++ 2022.2 入门">U++ 2022.2 入门</a><div class="article-meta-wrap"><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cpp/">C++</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Upp/">U++</a></span></div><div class="content">安装及初看U++平台本文提供有关 U++ 环境的基本信息以及在您的计算机上安装它所需的步骤。目录
+
+我为什么要在乎？
+在哪里下载
+Linux、FreeBSD 和 OpenSolaris 安装
+OpenBSD 特定说明
+视窗
+苹果系统
+选择主包对话框
+尝试第一个示例
+将 TheIDE 安装到 Linux 桌面菜单中
+如何启动新项目
+UppHub
+接下来是什么
+
+
+
+我为什么要在乎？U++ 是一个开源 C++ 框架&#x2F;开发环境，目前最适合具有雄心勃勃的项目的小型团队，这些项目可以做“真正的事情”，例如设计建筑物的工程应用程序、风电场模拟、销售点终端、SQL 客户端-服务器办公室议程、业务销售或复杂的网站后端（是的，我在这里列出了真实世界的示例）。然而，它也可以从最小的实用程序中很好地扩展，正如可以在此处看到的那样。
+它是围绕一些相当极端的原则设计的，以最大限度地提高开发人员的生产力和性能。
+虽然 C++ 语言的复杂性无法抽象出来（但绝对是实现生产力和性能目标所必需的），但有经验的 U++ 程序员可能会发现自己在 U++ 中执行任务比使用“易于使用”的脚本语言（如 Python）更有 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/176.html" title="p20220805">p20220805</a><div class="article-meta-wrap"></div><div class="content">1alert(1);
+
+1class C1&#123;&#125;
+
+12fun f1() a();</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/48578.html" title="Go语言 快速概览">Go语言 快速概览</a><div class="article-meta-wrap"><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Go/">Go</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Microsoft/">微软</a></span></div><div class="content">在本文中，我们将快速概述 Google 的 Go 编程语言。
+目录
+
+介绍
+Go Hello, World!
+注释
+分号
+功能 入口点
+变量 短变量声明
+内置类型
+用户定义的类型 结构 界面
+数组
+切片
+常数
+指针
+声明
+匿名函数 闭包
+方法
+参考
+历史
+
+介绍Go 是一种由 Google 创建的通用编程语言。这是一个开源项目，旨在提高程序员的工作效率。Go 非常有表现力和干净。它的并发编程能力帮助程序员编写需要充分利用多核和联网机器的程序。Go 是静态类型和编译的编程语言。Go 将程序快速编译成机器代码。它还具有垃圾收集功能。垃圾收集使并发代码更容易编写。除此之外，Go 还有一个非常丰富的标准库。
+
+Go Hello, World!让我们看看下面的“你好，世界！” 用 Go 编写的程序：
+package mainimport &quot;fmt&quot;func main() &#123;    fmt.Println(&quot;Hello, World!&quot;)&#125;
+
+从这个 hello world 程序中，我们得到了以下内容：
+
+一个名为main的包名。但实际上 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/560.html" title="C#中的寻路算法">C#中的寻路算法</a><div class="article-meta-wrap"><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/CSharp/">C#</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Microsoft/">微软</a></span></div><div class="content">下载源 - 571.3 KBhttps://www.codeproject.com/KB/Articles/1221034/Source.zipPath finding challengehttp://airobots.azurewebsites.net/
+在 Visual Studio 2017 中解压缩并打开解决方案
+介绍您有没有想过 GPS 应用程序如何计算到达所选目的地的最快方式？正如您将看到的，它实际上非常简单。
+本文对此进行了解释，并提供了您可以随意使用的示例代码。文章还比较了两种常见的基本算法，Dijkstra 和 A*。
+问题假设你有一张地图。你知道你在哪里，你想去哪里。地图有连接节点（有坐标的地方）的道路（它们被称为边）。
+从每个节点，你可以去一个或多个边。一条边有一个成本（例如，通过它所需的长度或时间）。对于小地图，也许可以计算到目的地的所有可能路线并选择最短的路线。但这对于具有许多节点的地图来说不是很实用，因为组合呈指数增长。
+
+迪杰斯特拉Dijkstra 算法由 Edsger Dijkstra 于 1959 年发现。这是它的工作原理：
+从起始节点开始，将所有连接 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2736.html" title="C#/.NET 中的动态语言运行时">C#/.NET 中的动态语言运行时</a><div class="article-meta-wrap"><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/CSharp/">C#</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Microsoft/">微软</a></span></div><div class="content">C# 中的动态语言运行时 DLR 概述本文讨论动态语言运行时如何在 C#、DynamicObject 和 ExpandoObject 中工作，以及 IronPython 在 .NET 中的最简单用法。介绍尽管 C# 属于静态类型语言，但在该语言的最新版本中添加了一些动态功能。在本文中，我想展示动态语言运行时 (DLR)如何在 C# 中工作，DynamicObject以及IronPython在 .NET 中ExpandoObject的最简单用法。
+C# 中的动态语言运行时 DLRDLR（动态语言运行时）自.NET 4.0开始添加，代表IronPython和IronRuby等动态语言的运行时环境。
+
+为了理解这个创新的本质，你需要知道静态类型和动态类型的语言之间的区别。在具有静态类型的语言中，所有类型及其成员 - 属性和方法的识别发生在编译阶段，而在动态语言中，系统在执行之前对类型的属性和方法一无所知。
+由于这个DLR环境，C# 可以创建其成员在程序执行阶段被识别的动态对象，并将它们与具有静态类型的传统对象一起使用。
+动态类型的使用是在 C# 中使用DLR的关键点，因此您可以在编译阶段跳过 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/1504.html" title="代码改变世界">代码改变世界</a><div class="article-meta-wrap"><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Qt/">Qt</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Php/">Php</a></span></div><div class="content">123![img](/pic/img20220727.png)sudo apt-get update./RNU-ME.sh
+
+
+
+
+12345678910111213141516171819202122class C&#123;&#125;var attributes = [  &#x27;autocomplete=&quot;off&quot;&#x27;,  &#x27;autocorrect=&quot;off&quot;&#x27;,  &#x27;autocapitalize=&quot;off&quot;&#x27;,  &#x27;spellcheck=&quot;false&quot;&#x27;,  &#x27;contenteditable=&quot;true&quot;&#x27;]var attributesStr = attributes.join(&#x27; &#x27;)hexo.extend.filter.register(&#x27;after_post_render&#x27;, function (data) &#123;  while (/& ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/22981.html" title="一台电脑配置多个GitHub 或 其他git 仓库账号的方法">一台电脑配置多个GitHub 或 其他git 仓库账号的方法</a><div class="article-meta-wrap"><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Github/">Github</a></span></div><div class="content">12345678910# 取消全局设置git config --global --unset user.namegit config --global --unset user.email# 进入项目目录git initgit config user.email &quot;xxxxx@xxx.com&quot;git config user.name &quot;xxxx&quot;git config --list</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/30233.html" title="vercel绑定域名 解析@cname">vercel绑定域名 解析@cname</a><div class="article-meta-wrap"><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Github/">Github</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Hexo/">Hexo</a></span></div><div class="content">_vercel	TXT	默认	vc-domain-verify&#x3D;code.quora8.cn,xxxx
+code	CNAME	默认	cname.vercel-dns.com
+@  A  默认  76.76.21.21
+www  CNAME  默认	cname.vercel-dns.com
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/33390.html" title="Ubuntu 安装nodejs最新版本简单方法">Ubuntu 安装nodejs最新版本简单方法</a><div class="article-meta-wrap"><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Ubuntu/">Ubuntu</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Nodejs/">Nodejs</a></span></div><div class="content">···sudo apt update -ysudo apt install -y npmsudo npm config set registry https://registry.npm.taobao.orgsudo npm install n -gsudo n stable···
+ubuntu 上安装node.js 的简单方法一、安装1.$ sudo apt-get install nodejs2.$ sudo apt-get install npm
+二、升级    1.升级npm命令如下：
+$ sudo npm install npm -g&#x2F;usr&#x2F;local&#x2F;bin&#x2F;npm -&gt; &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules&#x2F;npm&#x2F;bin&#x2F;npm-cli.js&#110;&#x70;&#109;&#64;&#x32;&#x2e;&#x31;&#x34;&#46;&#x32; &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/25333.html" title="换电脑把hexo从GitHub上克隆到本地-恢复使用操作">换电脑把hexo从GitHub上克隆到本地-恢复使用操作</a><div class="article-meta-wrap"><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Github/">Github</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Hexo/">Hexo</a></span></div><div class="content">先从github上克隆下来：
+1git clone git@github.com:code8cn/code8cn.github.io.git
+然后进入目录执行：
+12npm installnpm install hexo-deployer-git --save
+当然要已经安装好hexo
+1npm install hexo-cli
+
+一、配置环境1.安装git（点击进入Git官网，如果嫌下载慢自行百度解决~）2.Git与远程库进行SSH授权(点击查看教程Git的安装-与远程仓库GitHub配置)2.安装node.js  （点击进入nodejs官网直接下载）
+二.配置本地博客1.安装hexo
+1npm install -g hexo-cli
+安装好后不需要初始化（hexo init）2.克隆GitHub上保存的hexo网站原文件
+1git clone git@github.com:code8cn/code8cn.github.io.git
+3.生成缺少的网站文件
+进入克隆的目录，执行：
+12npm installnpm install hexo-deployer-git --save
+因为 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/code8.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Code8</div><div class="author-info__description">编程创造未来</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/56409.html" title="U++ 2022.2 入门">U++ 2022.2 入门</a><time datetime="2022-08-01T14:12:06.000Z" title="发表于 2022-08-01 22:12:06">2022-08-01</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/176.html" title="p20220805">p20220805</a><time datetime="2022-08-01T12:34:45.000Z" title="发表于 2022-08-01 20:34:45">2022-08-01</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/48578.html" title="Go语言 快速概览">Go语言 快速概览</a><time datetime="2022-08-01T09:59:07.000Z" title="发表于 2022-08-01 17:59:07">2022-08-01</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/560.html" title="C#中的寻路算法">C#中的寻路算法</a><time datetime="2022-07-31T09:32:39.000Z" title="发表于 2022-07-31 17:32:39">2022-07-31</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2736.html" title="C#/.NET 中的动态语言运行时">C#/.NET 中的动态语言运行时</a><time datetime="2022-07-31T09:08:29.000Z" title="发表于 2022-07-31 17:08:29">2022-07-31</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CSharp/"><span class="card-category-list-name">C#</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/cpp/"><span class="card-category-list-name">C++</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Go/"><span class="card-category-list-name">Go</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">6</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Github/" style="font-size: 1.37em; color: #99a4b2">Github</a> <a href="/tags/Hexo/" style="font-size: 1.23em; color: #999ea6">Hexo</a> <a href="/tags/Nodejs/" style="font-size: 1.1em; color: #999">Nodejs</a> <a href="/tags/Php/" style="font-size: 1.1em; color: #999">Php</a> <a href="/tags/Qt/" style="font-size: 1.1em; color: #999">Qt</a> <a href="/tags/Upp/" style="font-size: 1.1em; color: #999">U++</a> <a href="/tags/Ubuntu/" style="font-size: 1.37em; color: #99a4b2">Ubuntu</a> <a href="/tags/Microsoft/" style="font-size: 1.5em; color: #99a9bf">微软</a></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Code8</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    window.typed = new Typed("#subtitle", {
+      strings: ["代码改变世界"],
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '代码改变世界'
   }
-</script>
+}
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Code8"
-      src="/images/code8.jpg">
-  <p class="site-author-name" itemprop="name">Code8</p>
-  <div class="site-description" itemprop="description">编程创造未来</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives">
-          <span class="site-state-item-count">13</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-
-
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="/categories/" title="&#x2F;categories&#x2F;">📖 分类列表</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/categories/Android/" title="&#x2F;categories&#x2F;Android&#x2F;">👉 Android</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/categories/Linux/" title="&#x2F;categories&#x2F;Linux&#x2F;">👉 Linux</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/categories/Java/" title="&#x2F;categories&#x2F;Java&#x2F;">👉 Java</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/categories/cpp/" title="&#x2F;categories&#x2F;cpp&#x2F;">👉 C++</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/categories/Go/" title="&#x2F;categories&#x2F;Go&#x2F;">👉 Go</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/categories/CSharp/" title="&#x2F;categories&#x2F;CSharp&#x2F;">👉 C#</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/tags/" title="&#x2F;tags&#x2F;">💬 标签列表</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/tags/Ubuntu/" title="&#x2F;tags&#x2F;Ubuntu&#x2F;">✍ Ubuntu</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/tags/Nodejs/" title="&#x2F;tags&#x2F;Nodejs&#x2F;">✍ Nodejs</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/tags/Github/" title="&#x2F;tags&#x2F;Github&#x2F;">✍ Github</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/tags/Hexo/" title="&#x2F;tags&#x2F;Hexo&#x2F;">🔔 Hexo</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/tags/Microsoft/" title="&#x2F;tags&#x2F;Microsoft&#x2F;">🔔 微软</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/tags/Upp/" title="&#x2F;tags&#x2F;Upp&#x2F;">🔔 U++</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="/tags/Php/" title="&#x2F;tags&#x2F;Php&#x2F;">🔔 Php</a>
-        </li>
-    </ul>
-  </div>
-
-      </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Code8</span>
-</div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
