@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>微软在移动优先、云优先的世界中处于什么位置？</title>
-    <url>code8cn.github.io.git/16583.html</url>
+    <url>./16583.html</url>
     <content><![CDATA[<p>微软继续推广移动优先、云优先的游戏计划。这包括影响他们全面工作的变化。今天在西雅图举行的 Microsoft Build 大会上，微软提到了一些关于他们在云和移动计划方面的立场的统计数据。</p>
 <p>Microsoft Windows 10 月度活跃用户<br>微软世界的核心是他们的核心操作系统，Windows 10。Windows 10 月活跃用户达到 5 亿</p>
 <p>商业办公 365 月活跃用户<br>Microsoft Office 365 现在拥有 1 亿月度商业用户。由于 Office 已成为许多企业用户的核心生产力平台，Microsoft 正在为 Office 开发人员提供更多机会。这包括他们在上周的一次教育会议上谈到的微软团队的公告，开发人员可以访问该公告以添加扩展来执行诸如添加通知、扩展和可操作消息之类的操作。开发人员还可以使用新的 Microsoft Graph API 来利用 Microsoft 内部的数据和智能。最后，Microsoft 正在为 Azure 上的生产应用程序提供一种方式，现在可以向数以亿计的 ISV 活跃办公用户公开。</p>
@@ -22,7 +22,7 @@
   </entry>
   <entry>
     <title>代码改变世界</title>
-    <url>code8cn.github.io.git/1504.html</url>
+    <url>./1504.html</url>
     <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![img](/pic/img20220727.png)</span><br><span class="line">sudo apt-get update</span><br><span class="line">./RNU-ME.sh</span><br></pre></td></tr></table></figure>
 
 
@@ -60,7 +60,7 @@
   </entry>
   <entry>
     <title>执行sudo apt-get update时，无法获得锁 /var/lib/apt/lists/lock</title>
-    <url>code8cn.github.io.git/59101.html</url>
+    <url>./59101.html</url>
     <content><![CDATA[<p>百度到的方法是：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo kill 2224</span><br></pre></td></tr></table></figure>
 <p>可是我发现不行，然后又找到其他方法，也不行。<br>后来发现是自己不小心虚拟机多开了几个，<br>干脆把电脑重启，才解决了这个问题。<br>只把虚拟机重启是不行的。</p>
@@ -96,7 +96,7 @@
   </entry>
   <entry>
     <title>ubuntu的系统设置不见了找回,然后更新软件源</title>
-    <url>code8cn.github.io.git/57909.html</url>
+    <url>./57909.html</url>
     <content><![CDATA[<p>网上查到的方法都是这样：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sudo apt-get update</span><br><span class="line">$sudo apt-get install unity-control-center</span><br><span class="line">$sudo apt install gnome-control-center</span><br></pre></td></tr></table></figure>
 <p>我现在遇到一个新情况，那就是我的更新源出错了。<br>我就是要找到【系统设置】换更新源，<br>现在让我直接执行update，会提示很多错误。</p>
@@ -124,7 +124,7 @@
   </entry>
   <entry>
     <title>换电脑把hexo从GitHub上克隆到本地-恢复使用操作</title>
-    <url>code8cn.github.io.git/25333.html</url>
+    <url>./25333.html</url>
     <content><![CDATA[<p>先从github上克隆下来：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:code8cn/code8cn.github.io.git</span><br></pre></td></tr></table></figure>
 <p>然后进入目录执行：</p>
@@ -156,7 +156,7 @@
   </entry>
   <entry>
     <title>Ubuntu 安装nodejs最新版本简单方法</title>
-    <url>code8cn.github.io.git/33390.html</url>
+    <url>./33390.html</url>
     <content><![CDATA[<p>···<br>sudo apt update -y<br>sudo apt install -y npm<br>sudo npm config set registry <a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a><br>sudo npm install n -g<br>sudo n stable<br>···</p>
 <h3 id="ubuntu-上安装node-js-的简单方法"><a href="#ubuntu-上安装node-js-的简单方法" class="headerlink" title="ubuntu 上安装node.js 的简单方法"></a>ubuntu 上安装node.js 的简单方法</h3><p>一、安装<br>1.$ sudo apt-get install nodejs<br>2.$ sudo apt-get install npm</p>
 <p>二、升级<br>    1.升级npm命令如下：</p>
@@ -200,7 +200,7 @@
   </entry>
   <entry>
     <title>vercel绑定域名 解析@cname</title>
-    <url>code8cn.github.io.git/30233.html</url>
+    <url>./30233.html</url>
     <content><![CDATA[<p>_vercel	TXT	默认	<br>vc-domain-verify&#x3D;code.quora8.cn,xxxx</p>
 <p>code	CNAME	默认	<br>cname.vercel-dns.com</p>
 <p>@  A  默认  76.76.21.21</p>
@@ -216,7 +216,7 @@
   </entry>
   <entry>
     <title>一台电脑配置多个GitHub 或 其他git 仓库账号的方法</title>
-    <url>code8cn.github.io.git/22981.html</url>
+    <url>./22981.html</url>
     <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 取消全局设置</span><br><span class="line">git config --global --unset user.name</span><br><span class="line">git config --global --unset user.email</span><br><span class="line"></span><br><span class="line"># 进入项目目录</span><br><span class="line">git init</span><br><span class="line">git config user.email &quot;xxxxx@xxx.com&quot;</span><br><span class="line">git config user.name &quot;xxxx&quot;</span><br><span class="line"></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Linux</category>
@@ -227,7 +227,7 @@
   </entry>
   <entry>
     <title>C#/.NET 中的动态语言运行时</title>
-    <url>code8cn.github.io.git/2736.html</url>
+    <url>./2736.html</url>
     <content><![CDATA[<p>C# 中的动态语言运行时 DLR 概述<br>本文讨论动态语言运行时如何在 C#、DynamicObject 和 ExpandoObject 中工作，以及 IronPython 在 .NET 中的最简单用法。<br>介绍<br>尽管 C# 属于静态类型语言，但在该语言的最新版本中添加了一些动态功能。在本文中，我想展示动态语言运行时 (DLR)如何在 C# 中工作，DynamicObject以及IronPython在 .NET 中ExpandoObject的最简单用法。</p>
 <p>C# 中的动态语言运行时 DLR<br>DLR（动态语言运行时）自.NET 4.0开始添加，代表IronPython和IronRuby等动态语言的运行时环境。</p>
 <span id="more"></span>
@@ -289,7 +289,7 @@
   </entry>
   <entry>
     <title>C#中的寻路算法</title>
-    <url>code8cn.github.io.git/560.html</url>
+    <url>./560.html</url>
     <content><![CDATA[<p>下载源 - 571.3 KB<br><a href="https://www.codeproject.com/KB/Articles/1221034/Source.zip">https://www.codeproject.com/KB/Articles/1221034/Source.zip</a><br>Path finding challenge<br><a href="http://airobots.azurewebsites.net/">http://airobots.azurewebsites.net/</a></p>
 <p>在 Visual Studio 2017 中解压缩并打开解决方案</p>
 <p>介绍<br>您有没有想过 GPS 应用程序如何计算到达所选目的地的最快方式？正如您将看到的，它实际上非常简单。</p>
@@ -329,7 +329,7 @@
   </entry>
   <entry>
     <title>Go语言 快速概览</title>
-    <url>code8cn.github.io.git/48578.html</url>
+    <url>./48578.html</url>
     <content><![CDATA[<p>在本文中，我们将快速概述 Google 的 Go 编程语言。</p>
 <p>目录</p>
 <ol>
@@ -561,7 +561,7 @@
   </entry>
   <entry>
     <title>p20220805</title>
-    <url>code8cn.github.io.git/176.html</url>
+    <url>./176.html</url>
     <content><![CDATA[<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">alert</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">C1</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
@@ -570,7 +570,7 @@
   </entry>
   <entry>
     <title>U++ 2022.2 入门</title>
-    <url>code8cn.github.io.git/56409.html</url>
+    <url>./56409.html</url>
     <content><![CDATA[<p>安装及初看U++平台<br>本文提供有关 U++ 环境的基本信息以及在您的计算机上安装它所需的步骤。<br>目录</p>
 <ol>
 <li>我为什么要在乎？</li>
@@ -637,7 +637,7 @@
   </entry>
   <entry>
     <title>SQL Index Manager – 用于 SQL Server 和 Azure 上的索引维护的免费 G​​UI 工具</title>
-    <url>code8cn.github.io.git/8193.html</url>
+    <url>./8193.html</url>
     <content><![CDATA[<p>适用于 SQL Server 和 Azure 的开源索引维护工具<br>本文评估了我针对 SQL Server 和 Azure 的免费索引维护工具的设计方法：SQL 索引管理器。文章分析了 RedGate SQL Index Manager (v1.1.9.1378) 和 DevArt - dbForge Index Manager for SQL Server (v1.10.38) 的方法，并探讨了为什么我的工具将扫描分为两部分。最初，一个大的请求通过过滤那些不包含在过滤范围内的分区来预先确定分区的大小，然后，我们只获取那些包含数据的分区，以避免对空索引进行不必要的读取。</p>
 <p><a href="https://www.codeproject.com/KB/Articles/5162340/SQLIndexManager.zip">Download SQL Index Manager v1.0.0.69 </a>(latest)</p>
 <p><a href="https://www.codeproject.com/KB/Articles/5162340/SQLIndexManagerSource_v1.0.0.68.zip">Download source code</a> - 16.3 MB</p>
@@ -697,7 +697,7 @@
   </entry>
   <entry>
     <title>markdown表格语法</title>
-    <url>code8cn.github.io.git/50630.html</url>
+    <url>./50630.html</url>
     <content><![CDATA[<table>
 <thead>
 <tr>
