@@ -741,6 +741,7 @@
 <p>一看，utils.js和main.js用的是之前主题的。<br>不知道为什么public目录里的这两个js没有更新。</p>
 <p>解决方案：<br>从butterfly主题目录\source\js<br>复制这两个js文件到public对应目录。</p>
 <p>然后重新上传。<br>hexo d</p>
+<p>或者把public目录里面的内容全部删除，再重新生成一遍。<br>hexo g</p>
 ]]></content>
       <categories>
         <category>Linux</category>
