@@ -733,4 +733,21 @@
 </tbody></table>
 ]]></content>
   </entry>
+  <entry>
+    <title>解决hexo本地与github部署不一致的问题</title>
+    <url>/36684.html</url>
+    <content><![CDATA[<p>先通过右击-检查，查看console(控制台)<br>查看是哪里出错了，比如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Uncaught ReferenceError: NexT is not defined     at utils.js:9:1</span><br></pre></td></tr></table></figure>
+<p>一看，utils.js和main.js用的是之前主题的。<br>不知道为什么public目录里的这两个js没有更新。</p>
+<p>解决方案：<br>从butterfly主题目录\source\js<br>复制这两个js文件到public对应目录。</p>
+<p>然后重新上传。<br>hexo d</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
 </search>
