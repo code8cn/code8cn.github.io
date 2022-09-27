@@ -1169,182 +1169,298 @@
 </tr>
 </tbody></table>
 <h1 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h1><p>要创建无序列表，请在行项目前添加破折号 ( -)、星号 ( *) 或加号 ( +)。缩进一项或多项以创建嵌套列表。</p>
-<p>Markdown	HTML	渲染输出</p>
-<ul>
-<li>First item</li>
-<li>Second item</li>
-<li>Third item</li>
-<li>Fourth item	&lt;ul&gt;<br>&lt;li&gt;First item&lt;&#x2F;li&gt;<br>&lt;li&gt;Second item&lt;&#x2F;li&gt;<br>&lt;li&gt;Third item&lt;&#x2F;li&gt;<br>&lt;li&gt;Fourth item&lt;&#x2F;li&gt;<br>&lt;&#x2F;ul&gt;	<br>第一项<br>第二项<br>第三项<br>第四项</li>
-</ul>
-<ul>
-<li>First item</li>
-<li>Second item</li>
-<li>Third item</li>
-<li>Fourth item	&lt;ul&gt;<br>&lt;li&gt;First item&lt;&#x2F;li&gt;<br>&lt;li&gt;Second item&lt;&#x2F;li&gt;<br>&lt;li&gt;Third item&lt;&#x2F;li&gt;<br>&lt;li&gt;Fourth item&lt;&#x2F;li&gt;<br>&lt;&#x2F;ul&gt;	<br>第一项<br>第二项<br>第三项<br>第四项</li>
-</ul>
-<ul>
-<li>First item</li>
-<li>Second item</li>
-<li>Third item</li>
-<li>Fourth item	&lt;ul&gt;<br>&lt;li&gt;First item&lt;&#x2F;li&gt;<br>&lt;li&gt;Second item&lt;&#x2F;li&gt;<br>&lt;li&gt;Third item&lt;&#x2F;li&gt;<br>&lt;li&gt;Fourth item&lt;&#x2F;li&gt;<br>&lt;&#x2F;ul&gt;	<br>第一项<br>第二项<br>第三项<br>第四项</li>
-</ul>
-<ul>
-<li>First item</li>
-<li>Second item</li>
-<li>Third item<ul>
-<li>Indented item</li>
-<li>Indented item</li>
-</ul>
-</li>
-<li>Fourth item	&lt;ul&gt;<br>&lt;li&gt;First item&lt;&#x2F;li&gt;<br>&lt;li&gt;Second item&lt;&#x2F;li&gt;<br>&lt;li&gt;Third item<br>  &lt;ul&gt;<br>&lt;li&gt;Indented item&lt;&#x2F;li&gt;<br>&lt;li&gt;Indented item&lt;&#x2F;li&gt;<br>  &lt;&#x2F;ul&gt;<br>&lt;&#x2F;li&gt;<br>&lt;li&gt;Fourth item&lt;&#x2F;li&gt;<br>&lt;&#x2F;ul&gt;	<br>第一项<br>第二项<br>第三项<br>缩进的项目<br>缩进的项目<br>第四项<br>以数字开头的无序列表项<br>如果您需要以数字后跟句点开头的无序列表项，可以使用反斜杠 ( )转义句点。</li>
-</ul>
-<p>Markdown	HTML	渲染输出</p>
-<ul>
-<li>1968. A great year!</li>
-<li>I think 1969 was second best.	&lt;ul&gt;<br>&lt;li&gt;1968. A great year!&lt;&#x2F;li&gt;<br>&lt;li&gt;I think 1969 was second best.&lt;&#x2F;li&gt;<br>&lt;&#x2F;ul&gt;</li>
-</ul>
-<p>	<br>1968. 伟大的一年！<br>我认为 1969 年是第二好的。<br>无序列表最佳实践<br>Markdown 应用程序不同意如何处理同一列表中的不同分隔符。为了兼容性，不要在同一个列表中混合和匹配分隔符 - 选择一个并坚持使用它。</p>
-<p>✅ 这样做	❌ 不要这样做</p>
-<ul>
-<li>First item</li>
-<li>Second item</li>
-<li>Third item</li>
-<li>Fourth item	+ First item</li>
-</ul>
-<ul>
-<li>Second item</li>
-</ul>
-<ul>
-<li>Third item</li>
-</ul>
-<ul>
-<li>Fourth item<br>在列表中添加元素<br>要在列表中添加另一个元素同时保持列表的连续性，请将元素缩进四个空格或一个制表符，如以下示例所示。</li>
-</ul>
-<p> 提示：如果事情没有像您期望的那样出现，请仔细检查您是否将列表中的元素缩进了四个空格或一个制表符。<br>段落</p>
+<table>
+<thead>
+<tr>
+<th>Markdown</th>
+<th>HTML</th>
+<th>渲染输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>- First item<br/>- Second item<br/>- Third item<br/>- Fourth item</td>
+<td>&lt;ul&gt;<br/>  &lt;li&gt;First item&lt;&#x2F;li&gt;<br/>  &lt;li&gt;Second item&lt;&#x2F;li&gt;<br/>  &lt;li&gt;Third item&lt;&#x2F;li&gt;<br/>  &lt;li&gt;Fourth item&lt;&#x2F;li&gt;<br/>&lt;&#x2F;ul&gt;</td>
+<td>第一项<br/>第二项<br/>第三项<br/>第四项</td>
+</tr>
+<tr>
+<td>+ First item<br/>+ Second item<br/>+ Third item<br/>+ Fourth item</td>
+<td>&lt;ul&gt;<br/>&lt;li&gt;First item&lt;&#x2F;li&gt; <br/>&lt;li&gt;Second item&lt;&#x2F;li&gt; <br/>&lt;li&gt;Third item&lt;&#x2F;li&gt; <br/>&lt;li&gt;Fourth item&lt;&#x2F;li&gt;<br/>&lt;&#x2F;ul&gt;</td>
+<td><br/>第一项<br/>第二项<br/>第三项<br/>第四项</td>
+</tr>
+<tr>
+<td>- First item<br/>- Second item<br/>- Third item <br/>   - Indented item <br/>   - Indented item <br/>- Fourth item</td>
+<td>&lt;ul&gt;<br/>  &lt;li&gt;First item&lt;&#x2F;li&gt;<br/>  &lt;li&gt;Second item&lt;&#x2F;li&gt;<br/>  &lt;li&gt;Third item<br/>    &lt;ul&gt;<br/>     &lt;li&gt;Indented item&lt;&#x2F;li&gt;<br/>     &lt;li&gt;Indented item&lt;&#x2F;li&gt; <br/>   &lt;&#x2F;ul&gt;<br/> &lt;&#x2F;li&gt; <br/> &lt;li&gt;Fourth item&lt;&#x2F;li&gt;<br/>&lt;&#x2F;ul&gt;</td>
+<td><br/>第一项<br/>第二项<br/>第三项<br/>缩进的项目<br/>缩进的项目<br/>第四项</td>
+</tr>
+</tbody></table>
+<h1 id="以数字开头的无序列表项"><a href="#以数字开头的无序列表项" class="headerlink" title="以数字开头的无序列表项"></a>以数字开头的无序列表项</h1><p>如果您需要以数字后跟句点开头的无序列表项，可以使用反斜杠 ( \)转义句点。</p>
+<table>
+<thead>
+<tr>
+<th>Markdown</th>
+<th>HTML</th>
+<th>渲染输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>- 1968. A great year!<br/>- I think 1969 was second best.</td>
+<td>&lt;ul&gt;<br/>  &lt;li&gt;1968. A great year!&lt;&#x2F;li&gt;<br/>  &lt;li&gt;I think 1969 was second best.&lt;&#x2F;li&gt;<br/>&lt;&#x2F;ul&gt;</td>
+<td>1968. 伟大的一年！<br/>我认为 1969 年是第二好的。</td>
+</tr>
+</tbody></table>
+<h1 id="无序列表最佳实践"><a href="#无序列表最佳实践" class="headerlink" title="无序列表最佳实践"></a>无序列表最佳实践</h1><p>Markdown 应用程序不同意如何处理同一列表中的不同分隔符。为了兼容性，不要在同一个列表中混合和匹配分隔符 - 选择一个并坚持使用它。</p>
+<table>
+<thead>
+<tr>
+<th>✅ 这样做</th>
+<th>❌ 不要这样做</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>- First item<br/>- Second item<br/>- Third item<br/>- Fourth item</td>
+<td>+ First item<br/>* Second item<br/>- Third item<br/>+ Fourth item</td>
+</tr>
+</tbody></table>
+<h1 id="在列表中添加元素"><a href="#在列表中添加元素" class="headerlink" title="在列表中添加元素"></a>在列表中添加元素</h1><p>要在列表中添加另一个元素同时保持列表的连续性，请将元素缩进四个空格或一个制表符，如以下示例所示。</p>
+<blockquote>
+<p>提示：如果事情没有像您期望的那样出现，请仔细检查您是否将列表中的元素缩进了四个空格或一个制表符。</p>
+</blockquote>
+<h1 id="段落-1"><a href="#段落-1" class="headerlink" title="段落"></a>段落</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* This is the first list item.</span><br><span class="line">* Here&#x27;s the second list item.</span><br><span class="line"></span><br><span class="line">    I need to add another paragraph below the second list item.</span><br><span class="line"></span><br><span class="line">* And here&#x27;s the third list item.</span><br></pre></td></tr></table></figure>
+<p>渲染的输出如下所示：</p>
 <ul>
 <li><p>This is the first list item.</p>
 </li>
 <li><p>Here’s the second list item.</p>
 <p>  I need to add another paragraph below the second list item.</p>
 </li>
-<li><p>And here’s the third list item.<br>渲染的输出如下所示：</p>
+<li><p>And here’s the third list item.</p>
 </li>
 </ul>
-<p>这是第一个列表项。<br>这是第二个列表项。</p>
-<p>我需要在第二个列表项下方添加另一段。</p>
-<p>这是第三个列表项。<br>块引用</p>
+<h1 id="块引用-1"><a href="#块引用-1" class="headerlink" title="块引用"></a>块引用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* This is the first list item.</span><br><span class="line">* Here&#x27;s the second list item.</span><br><span class="line"></span><br><span class="line">    &gt; A blockquote would look great below the second list item.</span><br><span class="line"></span><br><span class="line">* And here&#x27;s the third list item.</span><br></pre></td></tr></table></figure>
+<p>渲染的输出如下所示：</p>
 <ul>
 <li><p>This is the first list item.</p>
 </li>
 <li><p>Here’s the second list item.</p>
-<p>  &gt; A blockquote would look great below the second list item.</p>
+<blockquote>
+<p>A blockquote would look great below the second list item.</p>
+</blockquote>
 </li>
-<li><p>And here’s the third list item.<br>渲染的输出如下所示：</p>
+<li><p>And here’s the third list item.</p>
 </li>
 </ul>
-<p>这是第一个列表项。<br>这是第二个列表项。</p>
-<p>块引用在第二个列表项下方看起来很棒。</p>
-<p>这是第三个列表项。<br>代码块<br>代码块通常缩进四个空格或一个制表符。当它们在列表中时，将它们缩进八个空格或两个制表符。</p>
-<ol>
-<li><p>Open the file.</p>
-</li>
-<li><p>Find the following code block on line 21:</p>
-<pre><code> &amp;lt;html&amp;gt;
-   &amp;lt;head&amp;gt;
-     &amp;lt;title&amp;gt;Test&amp;lt;/title&amp;gt;
-   &amp;lt;/head&amp;gt;
-</code></pre>
-</li>
-<li><p>Update the title to match the name of your website.<br>渲染的输出如下所示：</p>
-</li>
-</ol>
-<p>打开文件。<br>在第 21 行找到以下代码块：</p>
-<p> &lt;html&gt;<br>   &lt;head&gt;<br>     &lt;title&gt;Test&lt;&#x2F;title&gt;<br>   &lt;&#x2F;head&gt;<br>更新标题以匹配您网站的名称。</p>
-<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><ol>
-<li><p>Open the file containing the Linux mascot.</p>
-</li>
-<li><p>Marvel at its beauty.</p>
-<p> <img src="/assets/images/tux.png" alt="Tux, the Linux mascot"></p>
-</li>
-<li><p>Close the file.<br>渲染的输出如下所示：</p>
-</li>
-</ol>
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><p>代码块通常缩进四个空格或一个制表符。当它们在列表中时，将它们缩进八个空格或两个制表符。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. Open the file.</span><br><span class="line">2. Find the following code block on line 21:</span><br><span class="line"></span><br><span class="line">        &lt;html&gt;</span><br><span class="line">          &lt;head&gt;</span><br><span class="line">            &lt;title&gt;Test&lt;/title&gt;</span><br><span class="line">          &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">3. Update the title to match the name of your website.</span><br></pre></td></tr></table></figure>
+<p>使用`&#96;&#96; 代码 `&#96;&#96;</p>
+<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. Open the file containing the Linux mascot.</span><br><span class="line">2. Marvel at its beauty.</span><br><span class="line"></span><br><span class="line">    ![Tux, the Linux mascot](/assets/images/tux.png)</span><br><span class="line"></span><br><span class="line">3. Close the file.</span><br></pre></td></tr></table></figure>
+<p>渲染的输出如下所示：</p>
 <p>打开包含 Linux 吉祥物的文件。<br>惊叹于它的美丽。</p>
 <p>Tux，Linux 吉祥物</p>
-<p>关闭文件。<br>列表<br>您可以将无序列表嵌套在有序列表中，反之亦然。</p>
-<ol>
-<li>First item</li>
-<li>Second item</li>
-<li>Third item<ul>
-<li>Indented item</li>
-<li>Indented item</li>
-</ul>
-</li>
-<li>Fourth item<br>渲染的输出如下所示：</li>
-</ol>
-<p>第一项<br>第二项<br>第三项<br>缩进的项目<br>缩进的项目<br>第四项<br>代码<br>要将单词或短语表示为代码，请将其括在反引号 ( &#96;) 中。</p>
-<p>Markdown	HTML	渲染输出<br>At the command prompt, type <code>nano</code>.	At the command prompt, type &lt;code&gt;nano&lt;&#x2F;code&gt;.	在命令提示符处，键入nano.<br>转义反引号<br>如果要表示为代码的单词或短语包含一个或多个反引号，则可以通过将单词或短语括在双反引号 ( &#96;&#96;) 中来对其进行转义。</p>
-<p>Markdown	HTML	渲染输出<br><code>Use `code` in your Markdown file.</code>	&lt;code&gt;Use <code>code</code> in your Markdown file.&lt;&#x2F;code&gt;	Use <code>code</code> in your Markdown file.<br>代码块<br>要创建代码块，请将块的每一行缩进至少四个空格或一个制表符。</p>
-<pre><code>&amp;lt;html&amp;gt;
-  &amp;lt;head&amp;gt;
-  &amp;lt;/head&amp;gt;
-&amp;lt;/html&amp;gt;
-</code></pre>
+<p>关闭文件。</p>
+<h1 id="列表-1"><a href="#列表-1" class="headerlink" title="列表"></a>列表</h1><p>您可以将无序列表嵌套在有序列表中，反之亦然。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. First item</span><br><span class="line">2. Second item</span><br><span class="line">3. Third item</span><br><span class="line">    - Indented item</span><br><span class="line">    - Indented item</span><br><span class="line">4. Fourth item</span><br></pre></td></tr></table></figure>
 <p>渲染的输出如下所示：</p>
-<p>&lt;html&gt;<br>  &lt;head&gt;<br>  &lt;&#x2F;head&gt;<br>&lt;&#x2F;html&gt;<br> 注意：要创建不缩进行的代码块，请使用围栏代码块。<br>水平规则<br>要创建水平线，请在一行上单独使用三个或更多星号 ( ***)、破折号 ( —) 或下划线 ( ___)。</p>
-<hr>
-<hr>
-<hr>
+<p>第一项<br>第二项<br>第三项<br>缩进的项目<br>缩进的项目<br>第四项</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>要将单词或短语表示为代码，请将其括在反引号 ( &#96;) 中。</p>
+<table>
+<thead>
+<tr>
+<th>Markdown</th>
+<th>HTML</th>
+<th>渲染输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>At the command prompt, type <code>nano</code>.</td>
+<td>At the command prompt, type &lt;code&gt;nano&lt;&#x2F;code&gt;.</td>
+<td>在命令提示符处，键入nano.</td>
+</tr>
+</tbody></table>
+<h1 id="转义反引号"><a href="#转义反引号" class="headerlink" title="转义反引号"></a>转义反引号</h1><p>如果要表示为代码的单词或短语包含一个或多个反引号，则可以通过将单词或短语括在双反引号 ( &#96;&#96;) 中来对其进行转义。</p>
+<table>
+<thead>
+<tr>
+<th>Markdown</th>
+<th>HTML</th>
+<th>渲染输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>`` Use `code` in your Markdown file. ``</td>
+<td>&lt;code&gt;Use `code` in your Markdown file.&lt;&#x2F;code&gt;</td>
+<td><code>Use `code` in your Markdown file.</code></td>
+</tr>
+</tbody></table>
+<h1 id="代码块-1"><a href="#代码块-1" class="headerlink" title="代码块"></a>代码块</h1><p>要创建代码块，请将块的每一行缩进至少四个空格或一个制表符。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>渲染的输出如下所示：</p>
+<p>&lt;html&gt;<br>  &lt;head&gt;<br>  &lt;&#x2F;head&gt;<br>&lt;&#x2F;html&gt;<br> 注意：要创建不缩进行的代码块，请使用围栏代码块。</p>
+<h1 id="水平规则"><a href="#水平规则" class="headerlink" title="水平规则"></a>水平规则</h1><p>要创建水平线，请在一行上单独使用三个或更多星号 ( ***)、破折号 ( —) 或下划线 ( ___)。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">***</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">_________________</span><br></pre></td></tr></table></figure>
 <p>所有三个的渲染输出看起来相同：</p>
-<p>水平规则最佳实践<br>为了兼容性，在横线前后放置空行。</p>
-<p>✅ 这样做	❌ 不要这样做<br>Try to put a blank line before…</p>
 <hr>
-<h2 id="…and-after-a-horizontal-rule-Without-blank-lines-this-would-be-a-heading"><a href="#…and-after-a-horizontal-rule-Without-blank-lines-this-would-be-a-heading" class="headerlink" title="…and after a horizontal rule.	Without blank lines, this would be a heading."></a>…and after a horizontal rule.	Without blank lines, this would be a heading.</h2><p>Don’t do this!<br>链接<br>要创建链接，请将链接文本括在括号中（例如，[Duck Duck Go]），然后紧跟在括号中的 URL（例如，(<a href="https://duckduckgo.com))./">https://duckduckgo.com)）。</a></p>
-<p>My favorite search engine is <a href="https://duckduckgo.com/">Duck Duck Go</a>.<br>渲染的输出如下所示：</p>
-<p>我最喜欢的搜索引擎是Duck Duck Go。</p>
-<p> 注意：要链接到同一页面上的元素，请参阅链接到标题 ID。要创建在新选项卡或窗口中打开的链接，请参阅链接目标部分。<br>添加标题<br>您可以选择为链接添加标题。当用户将鼠标悬停在链接上时，这将显示为工具提示。要添加标题，请在 URL 后用引号将其括起来。</p>
-<p>My favorite search engine is <a href="https://duckduckgo.com/" title="The best search engine for privacy">Duck Duck Go</a>.<br>渲染的输出如下所示：</p>
-<p>我最喜欢的搜索引擎是Duck Duck Go。</p>
-<p>URL 和电子邮件地址<br>要将 URL 或电子邮件地址快速转换为链接，请将其括在尖括号中。</p>
-<p>&lt;<a href="https://www.markdownguide.org/">https://www.markdownguide.org</a>&gt;<br>&lt;<a href="mailto:&#102;&#97;&#107;&#x65;&#64;&#101;&#120;&#x61;&#109;&#112;&#108;&#101;&#x2e;&#x63;&#x6f;&#109;">&#102;&#97;&#107;&#x65;&#64;&#101;&#120;&#x61;&#109;&#112;&#108;&#101;&#x2e;&#x63;&#x6f;&#109;</a>&gt;<br>渲染的输出如下所示：</p>
-<p><a href="https://www.markdownguide.org/">https://www.markdownguide.org</a><br><a href="mailto:&#x66;&#x61;&#107;&#101;&#64;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;">&#x66;&#x61;&#107;&#101;&#64;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;</a></p>
+<h1 id="水平规则最佳实践"><a href="#水平规则最佳实践" class="headerlink" title="水平规则最佳实践"></a>水平规则最佳实践</h1><p>为了兼容性，在横线前后放置空行。</p>
+<table>
+<thead>
+<tr>
+<th>✅ 这样做</th>
+<th>❌ 不要这样做</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Try to put a blank line before…<br/><br/>—<br/><br/>…and after a horizontal rule.</td>
+<td>Without blank lines, this would be a heading.<br/>—<br/>Don’t do this!</td>
+</tr>
+</tbody></table>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>要创建链接，请将链接文本括在括号中（例如，[Duck Duck Go]），然后紧跟在括号中的 URL（例如，(<a href="https://duckduckgo.com))./">https://duckduckgo.com)）。</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">My favorite search engine is [Duck Duck Go](https://duckduckgo.com).</span><br></pre></td></tr></table></figure>
+
+<p>渲染的输出如下所示：</p>
+<p>My favorite search engine is <a href="https://duckduckgo.com/">Duck Duck Go</a>.</p>
+<blockquote>
+<p>注意：要链接到同一页面上的元素，请参阅链接到标题 ID。要创建在新选项卡或窗口中打开的链接，请参阅链接目标部分。</p>
+</blockquote>
+<h1 id="添加标题"><a href="#添加标题" class="headerlink" title="添加标题"></a>添加标题</h1><p>您可以选择为链接添加标题。当用户将鼠标悬停在链接上时，这将显示为工具提示。要添加标题，请在 URL 后用引号将其括起来。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">My favorite search engine is [Duck Duck Go](https://duckduckgo.com &quot;The best search engine for privacy&quot;).</span><br></pre></td></tr></table></figure>
+<p>渲染的输出如下所示：</p>
+<p>My favorite search engine is <a href="https://duckduckgo.com/" title="The best search engine for privacy">Duck Duck Go</a>.</p>
+<h1 id="URL-和电子邮件地址"><a href="#URL-和电子邮件地址" class="headerlink" title="URL 和电子邮件地址"></a>URL 和电子邮件地址</h1><p>要将 URL 或电子邮件地址快速转换为链接，请将其括在尖括号中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;https://www.code2u.top&gt;</span><br><span class="line">&lt;fake@code2u.top&gt;</span><br></pre></td></tr></table></figure>
+
+<p>渲染的输出如下所示：<br><a href="https://www.code2u.top/">https://www.code2u.top</a><br><a href="mailto:&#102;&#x61;&#107;&#x65;&#64;&#99;&#x6f;&#x64;&#x65;&#x32;&#117;&#46;&#116;&#x6f;&#x70;">&#102;&#x61;&#107;&#x65;&#64;&#99;&#x6f;&#x64;&#x65;&#x32;&#117;&#46;&#116;&#x6f;&#x70;</a></p>
 <h1 id="格式化链接"><a href="#格式化链接" class="headerlink" title="格式化链接"></a>格式化链接</h1><p>要强调链接，请在方括号和圆括号前后添加星号。要将链接表示为code，请在括号中添加反引号。</p>
-<p>I love supporting the <strong><a href="https://eff.org/">EFF</a></strong>.<br>This is the <em><a href="https://www.markdownguide.org/">Markdown Guide</a></em>.<br>See the section on <a href="#code"><code>code</code></a>.<br>渲染的输出如下所示：</p>
-<p>我喜欢支持EFF。<br>这是Markdown指南。<br>请参阅关于 的部分code。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">I love supporting the **[EFF](https://eff.org)**.</span><br><span class="line">This is the *[Markdown Guide](https://www.code2u.top)*.</span><br><span class="line">See the section on [`code`](#code).</span><br></pre></td></tr></table></figure>
+
+<p>渲染的输出如下所示：</p>
+<p>I love supporting the <strong><a href="https://eff.org/">EFF</a></strong>.<br>This is the <em><a href="https://www.code2u.top/">Markdown Guide</a></em>.<br>See the section on <a href="#code"><code>code</code></a>.</p>
 <h1 id="参考风格的链接"><a href="#参考风格的链接" class="headerlink" title="参考风格的链接"></a>参考风格的链接</h1><p>参考风格的链接是一种特殊的链接，它使 URL 更容易在 Markdown 中显示和阅读。参考风格的链接由两部分构成：与文本保持内联的部分和存储在文件中其他位置以使文本易于阅读的部分。</p>
 <p>格式化链接的第一部分<br>引用样式链接的第一部分使用两组括号进行格式化。第一组括号包围应该显示为链接的文本。第二组括号显示一个标签，用于指向您存储在文档中其他位置的链接。</p>
 <p>虽然不是必需的，但您可以在第一组和第二组括号之间包含一个空格。第二组括号中的标签不区分大小写，可以包含字母、数字、空格或标点符号。</p>
 <p>这意味着以下示例格式与链接的第一部分大致相同：</p>
-<p><a href="https://en.wikipedia.org/wiki/Hobbit#Lifestyle">hobbit-hole</a><br>[hobbit-hole] <a href="https://en.wikipedia.org/wiki/Hobbit#Lifestyle">1</a><br>格式化链接的第二部分<br>引用样式链接的第二部分使用以下属性进行格式化：</p>
-<p>括号中的标签紧跟一个冒号和至少一个空格（例如，[label]: ）。<br>链接的 URL，您可以选择将其括在尖括号中。<br>链接的可选标题，可以用双引号、单引号或括号括起来。<br>这意味着以下示例格式对于链接的第二部分都大致相同：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[hobbit-hole][1]</span><br><span class="line">[hobbit-hole] [1]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Hobbit#Lifestyle" title="Hobbit lifestyles">hobbit-hole</a></li>
+<li>[hobbit-hole] <a href="https://en.wikipedia.org/wiki/Hobbit#Lifestyle" title="Hobbit lifestyles">1</a></li>
+</ul>
+<h1 id="格式化链接的第二部分"><a href="#格式化链接的第二部分" class="headerlink" title="格式化链接的第二部分"></a>格式化链接的第二部分</h1><p>引用样式链接的第二部分使用以下属性进行格式化：</p>
+<ol>
+<li>括号中的标签紧跟一个冒号和至少一个空格（例如，[label]: ）。</li>
+<li>链接的 URL，您可以选择将其括在尖括号中。</li>
+<li>链接的可选标题，可以用双引号、单引号或括号括起来。<br>这意味着以下示例格式对于链接的第二部分都大致相同：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[1]: https://en.wikipedia.org/wiki/Hobbit#Lifestyle</span><br><span class="line">[1]: https://en.wikipedia.org/wiki/Hobbit#Lifestyle &quot;Hobbit lifestyles&quot;</span><br><span class="line">[1]: https://en.wikipedia.org/wiki/Hobbit#Lifestyle &#x27;Hobbit lifestyles&#x27;</span><br><span class="line">[1]: https://en.wikipedia.org/wiki/Hobbit#Lifestyle (Hobbit lifestyles)</span><br><span class="line">[1]: &lt;https://en.wikipedia.org/wiki/Hobbit#Lifestyle&gt; &quot;Hobbit lifestyles&quot;</span><br><span class="line">[1]: &lt;https://en.wikipedia.org/wiki/Hobbit#Lifestyle&gt; &#x27;Hobbit lifestyles&#x27;</span><br><span class="line">[1]: &lt;https://en.wikipedia.org/wiki/Hobbit#Lifestyle&gt; (Hobbit lifestyles)</span><br></pre></td></tr></table></figure>
 <p>您可以将链接的第二部分放在 Markdown 文档中的任何位置。有些人将它们放在它们出现的段落之后，而另一些人将它们放在文档的末尾（如尾注或脚注）。</p>
-<p>将零件放在一起的示例<br>假设您将 URL 作为标准 URL 链接添加到段落，它在 Markdown 中如下所示：</p>
-<p>In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends<br>of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to<br>eat: it was a <a href="https://en.wikipedia.org/wiki/Hobbit#Lifestyle" title="Hobbit lifestyles">hobbit-hole</a>, and that means comfort.<br>尽管它可能指向有趣的附加信息，但显示的 URL 实际上并没有给现有的原始文本添加太多内容，只是使其更难阅读。要解决这个问题，您可以像这样格式化 URL：</p>
-<p>In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends<br>of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to<br>eat: it was a <a href="https://en.wikipedia.org/wiki/Hobbit#Lifestyle">hobbit-hole</a>, and that means comfort.</p>
+<h1 id="将零件放在一起的示例"><a href="#将零件放在一起的示例" class="headerlink" title="将零件放在一起的示例"></a>将零件放在一起的示例</h1><p>假设您将 URL 作为标准 URL 链接添加到段落，它在 Markdown 中如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends</span><br><span class="line">of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to</span><br><span class="line">eat: it was a [hobbit-hole](https://en.wikipedia.org/wiki/Hobbit#Lifestyle &quot;Hobbit lifestyles&quot;), and that means comfort.</span><br></pre></td></tr></table></figure>
+<p>尽管它可能指向有趣的附加信息，但显示的 URL 实际上并没有给现有的原始文本添加太多内容，只是使其更难阅读。要解决这个问题，您可以像这样格式化 URL：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends</span><br><span class="line">of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to</span><br><span class="line">eat: it was a [hobbit-hole][1], and that means comfort.</span><br><span class="line"></span><br><span class="line">[1]: &lt;https://en.wikipedia.org/wiki/Hobbit#Lifestyle&gt; &quot;Hobbit lifestyles&quot;</span><br></pre></td></tr></table></figure>
 <p>在上述两种情况下，渲染的输出都是相同的：</p>
-<p>在地下的一个洞里住着一个霍比特人。不是一个肮脏、肮脏、潮湿、满是虫子末端和一股渗出气味的肮脏、肮脏、潮湿的洞，也不是一个干燥、裸露、沙质的洞，里面没有东西可以坐下或吃东西：那是一个霍比特洞，而且意味着舒适。</p>
-<p>链接的 HTML 将是：</p>
-<p>&lt;a href&#x3D;”<a href="https://en.wikipedia.org/wiki/Hobbit#Lifestyle&quot;">https://en.wikipedia.org/wiki/Hobbit#Lifestyle&quot;</a> title&#x3D;”Hobbit lifestyles”&gt;hobbit-hole&lt;&#x2F;a&gt;<br>链接最佳实践<br>Markdown 应用程序不同意如何处理 URL 中间的空格。为了兼容性，请尝试使用 . 对任何空格进行 URL 编码%20。或者，如果您的 Markdown 应用程序支持 HTML，您可以使用aHTML 标签。</p>
-<p>✅ 这样做	❌ 不要这样做<br><a href="https://www.example.com/my%20great%20page">link</a></p>
-<p>&lt;a href&#x3D;”<a href="https://www.example.com/my">https://www.example.com/my</a> great page”&gt;link&lt;&#x2F;a&gt;	[link](<a href="https://www.example.com/my">https://www.example.com/my</a> great page)<br>图片<br>要添加图像，请添加感叹号 ( !)，后跟括号中的替代文本，以及括号中的图像资源的路径或 URL。您可以选择在路径或 URL 后添加引号中的标题。</p>
-<p><img src="/assets/images/san-juan-mountains.jpg" alt="The San Juan Mountains are beautiful!" title="San Juan Mountains"><br>渲染的输出如下所示：</p>
-<p>圣胡安山很美！</p>
-<p> 注意：要调整图像大小，请参阅图像大小部分。要添加说明，请参阅图像说明部分。<br>链接图像<br>要添加指向图像的链接，请将图像的 Markdown 括在括号中，然后将链接添加到括号中。</p>
-<p><a href="https://www.flickr.com/photos/beaurogers/31833779864/in/photolist-Qv3rFw-34mt9F-a9Cmfy-5Ha3Zi-9msKdv-o3hgjr-hWpUte-4WMsJ1-KUQ8N-deshUb-vssBD-6CQci6-8AFCiD-zsJWT-nNfsgB-dPDwZJ-bn9JGn-5HtSXY-6CUhAL-a4UTXB-ugPum-KUPSo-fBLNm-6CUmpy-4WMsc9-8a7D3T-83KJev-6CQ2bK-nNusHJ-a78rQH-nw3NvT-7aq2qf-8wwBso-3nNceh-ugSKP-4mh4kh-bbeeqH-a7biME-q3PtTf-brFpgb-cg38zw-bXMZc-nJPELD-f58Lmo-bXMYG-bz8AAi-bxNtNT-bXMYi-bXMY6-bXMYv"><img src="/assets/images/shiprock.jpg" alt="An old rock in the desert" title="Shiprock, New Mexico by Beau Rogers"></a><br>渲染的输出如下所示：</p>
-<p>沙漠中的一块老岩石<br>转义字符<br>要显示原本用于在 Markdown 文档中格式化文本的文字字符，\请在字符前面添加反斜杠 ( )。</p>
-<p>* Without the backslash, this would be a bullet in an unordered list.<br>渲染的输出如下所示：</p>
+<p>In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends<br>of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to<br>eat: it was a <a href="https://en.wikipedia.org/wiki/Hobbit#Lifestyle" title="Hobbit lifestyles">hobbit-hole</a>, and that means comfort.</p>
+<h1 id="链接的-HTML-将是："><a href="#链接的-HTML-将是：" class="headerlink" title="链接的 HTML 将是："></a>链接的 HTML 将是：</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;a href=&quot;https://en.wikipedia.org/wiki/Hobbit#Lifestyle&quot; title=&quot;Hobbit lifestyles&quot;&gt;hobbit-hole&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="链接最佳实践"><a href="#链接最佳实践" class="headerlink" title="链接最佳实践"></a>链接最佳实践</h1><p>Markdown 应用程序不同意如何处理 URL 中间的空格。为了兼容性，请尝试使用 . 对任何空格进行 URL 编码%20。或者，如果您的 Markdown 应用程序支持 HTML，您可以使用aHTML 标签。</p>
+<table>
+<thead>
+<tr>
+<th>✅ 这样做</th>
+<th>❌ 不要这样做</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[link](https://www.example.com/my%20great%20page)&amp;lt;a href=&quot;https://www.example.com/my great page&quot;&amp;gt;link&amp;lt;/a&amp;gt;	</code></td>
+<td><code>[link](https://www.example.com/my great page)</code></td>
+</tr>
+</tbody></table>
+<h1 id="图片-1"><a href="#图片-1" class="headerlink" title="图片"></a>图片</h1><p>要添加图像，请添加感叹号 ( !)，后跟括号中的替代文本，以及括号中的图像资源的路径或 URL。您可以选择在路径或 URL 后添加引号中的标题。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![The San Juan Mountains are beautiful!](/assets/images/san-juan-mountains.jpg &quot;San Juan Mountains&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>注意：要调整图像大小，请参阅图像大小部分。要添加说明，请参阅图像说明部分。<br>链接图像<br>要添加指向图像的链接，请将图像的 Markdown 括在括号中，然后将链接添加到括号中。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[![An old rock in the desert](/assets/images/shiprock.jpg &quot;Shiprock, New Mexico by Beau Rogers&quot;)](https://www.flickr.com/photos/beaurogers/31833779864/in/photolist-Qv3rFw-34mt9F-a9Cmfy-5Ha3Zi-9msKdv-o3hgjr-hWpUte-4WMsJ1-KUQ8N-deshUb-vssBD-6CQci6-8AFCiD-zsJWT-nNfsgB-dPDwZJ-bn9JGn-5HtSXY-6CUhAL-a4UTXB-ugPum-KUPSo-fBLNm-6CUmpy-4WMsc9-8a7D3T-83KJev-6CQ2bK-nNusHJ-a78rQH-nw3NvT-7aq2qf-8wwBso-3nNceh-ugSKP-4mh4kh-bbeeqH-a7biME-q3PtTf-brFpgb-cg38zw-bXMZc-nJPELD-f58Lmo-bXMYG-bz8AAi-bxNtNT-bXMYi-bXMY6-bXMYv)</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h1><p>要显示原本用于在 Markdown 文档中格式化文本的文字字符，\请在字符前面添加反斜杠 ( )。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\* Without the backslash, this would be a bullet in an unordered list.</span><br></pre></td></tr></table></figure>
+
+<p>渲染的输出如下所示：</p>
 <ul>
 <li>如果没有反斜杠，这将是无序列表中的项目符号。</li>
 </ul>
-<p>你可以逃脱的角色<br>您可以使用反斜杠来转义以下字符。</p>
-<p>特点	姓名<br>\	反斜杠<br>&#96;	反引号（另请参见代码中的转义反引号）<br>*	星号<br>_	下划线<br>{ }	大括号<br>[ ]	括号<br>&lt; &gt;	尖括号<br>( )	括号<br>#	英镑符号<br>+	加号<br>-	减号（连字符）<br>.	点<br>！	感叹号<br>|	管道（另见表中的逃逸管道）</p>
+<h1 id="你可以逃脱的角色"><a href="#你可以逃脱的角色" class="headerlink" title="你可以逃脱的角色"></a>你可以逃脱的角色</h1><p>您可以使用反斜杠来转义以下字符。</p>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>姓名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\</td>
+<td>反斜杠</td>
+</tr>
+<tr>
+<td>&#96;</td>
+<td>反引号（另请参见代码中的转义反引号）</td>
+</tr>
+<tr>
+<td>*</td>
+<td>星号</td>
+</tr>
+<tr>
+<td>_</td>
+<td>下划线</td>
+</tr>
+<tr>
+<td>{ }</td>
+<td>大括号</td>
+</tr>
+<tr>
+<td>[ ]</td>
+<td>括号</td>
+</tr>
+<tr>
+<td>&lt; &gt;</td>
+<td>尖括号</td>
+</tr>
+<tr>
+<td>( )</td>
+<td>括号</td>
+</tr>
+<tr>
+<td>#</td>
+<td>英镑符号</td>
+</tr>
+<tr>
+<td>+</td>
+<td>加号</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减号（连字符）</td>
+</tr>
+<tr>
+<td>.</td>
+<td>点</td>
+</tr>
+<tr>
+<td>！</td>
+<td>感叹号</td>
+</tr>
+<tr>
+<td>|</td>
+<td>管道（另见表中的逃逸管道）</td>
+</tr>
+</tbody></table>
 <h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><p>许多 Markdown 应用程序允许您在 Markdown 格式的文本中使用 HTML 标签。如果您更喜欢某些 HTML 标记而不是 Markdown 语法，这将很有帮助。例如，有些人发现对图像使用 HTML 标记更容易。当您需要更改元素的属性（例如指定文本的颜色或更改图像的宽度）时，使用 HTML 也很有帮助。</p>
 <p>要使用 HTML，请将标签放在 Markdown 格式文件的文本中。</p>
 <p>This <strong>word</strong> is bold. This &lt;em&gt;word&lt;&#x2F;em&gt; is italic.<br>渲染的输出如下所示：</p>
 <p>这个词是粗体的。这个词是斜体的。</p>
 <h1 id="HTML-最佳实践"><a href="#HTML-最佳实践" class="headerlink" title="HTML 最佳实践"></a>HTML 最佳实践</h1><p>出于安全原因，并非所有 Markdown 应用程序都支持 Markdown 文档中的 HTML。如有疑问，请查看您的 Markdown 应用程序文档。某些应用程序仅支持 HTML 标记的子集。</p>
 <p>使用空行将块级 HTML 元素（如&lt;div&gt;、&lt;table&gt;、&lt;pre&gt;和&lt;p&gt;）与周围的内容分开。尽量不要用制表符或空格缩进标签——这会干扰格式。</p>
-<p>您不能在块级 HTML 标记中使用 Markdown 语法。例如，&lt;p&gt;italic and <strong>bold</strong>&lt;&#x2F;p&gt;不会工作。</p>
+<p>您不能在块级 HTML 标记中使用 Markdown 语法。例如，&lt;p&gt;italic and **bold**&lt;&#x2F;p&gt;不会工作。</p>
 ]]></content>
       <categories>
         <category>Code</category>
