@@ -1612,7 +1612,7 @@
 <p>X<sup>2</sup></p>
 <p>或者，如果您的 Markdown 应用程序支持HTML，您可以使用supHTML 标签。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">X&lt;sup&gt;2&lt;/sup&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="自动-URL-链接"><a href="#自动-URL-链接" class="headerlink" title="自动 URL 链接"></a>自动 URL 链接</h2><p>许多 Markdown 处理器会自动将 URL 转换为链接。这意味着如果您键入 <a href="http://www.code2u.top,即使您没有使用括号,您的/">http://www.code2u.top，即使您没有使用括号，您的</a> Markdown 处理器也会自动将其转换为链接。</p>
+<h2 id="自动-URL-链接"><a href="#自动-URL-链接" class="headerlink" title="自动 URL 链接"></a>自动 URL 链接</h2><p>许多 Markdown 处理器会自动将 URL 转换为链接。这意味着如果您键入 <a href="http://www.code2u.top/">http://www.code2u.top</a> ，即使您没有使用括号，您的 Markdown 处理器也会自动将其转换为链接。</p>
 <p><a href="http://www.code2u.top/">http://www.code2u.top</a><br>渲染的输出如下所示：</p>
 <p><a href="http://www.code2u.top/">http://www.code2u.top</a></p>
 <h2 id="禁用自动-URL-链接"><a href="#禁用自动-URL-链接" class="headerlink" title="禁用自动 URL 链接"></a>禁用自动 URL 链接</h2><p>如果您不希望自动链接 URL，可以通过将 URL 表示为带有反引号的代码来删除链接。</p>
